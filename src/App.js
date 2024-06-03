@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import { PrimerComponente } from './components/PrimerComponente';
+import { SegundoComponente } from './container/SegundoComponente';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          COmo va eso
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="border-solid border-2 border-indigo-600">
+      <PrimerComponente />
       </header>
+      <div className='flex justify-center border-solid border-2 border-indigo-600'>
+      <SegundoComponente />
+      </div>
     </div>
   );
 }
