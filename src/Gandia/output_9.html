@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playa Norte de Gandía</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>Playa Norte de Gandía (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/a1a8b599f7df4e1232ae09afcce16a2d0c65daae1620915650.jpg" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description">Gandia has one of the longest and most extensive beaches with almost 7 km of fine sand. The coastline divides this area into 4 beaches: Els Marenys de Raflacaid, Venice beach, Nord beach and l’Ahuir beach. The most touristic and important beach is the Nord beach, which has all the safety, quality and environmental certifications. In the 1960s, with the national tourism boom, Gandia beach had a rapid development: the construction of hotels, apartments and the promenade began. It is currently one of the main tourist destinations in the Mediterranean due to its quality of the sand and the waters, certified by the blue flag, a European quality seal that it has received for the last 34 years in a row. It offers all kinds of water activities in the yacht club: sailing, rowing, windsurfing, etc., as well as cultural activities on the seafront during the summer, volleyball sports competitions and all kinds of daytime and nightlife.
+</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Information</p>
+                            <p><strong>URL:</strong> <a href="https://www.visitgandia.com/guides/uploaded/PLAYA-2020digitalcompressed-.pdf " target="_blank" rel="noopener noreferrer">https://www.visitgandia.com/guides/uploaded/PLAYA-2020digitalcompressed-.pdf </a></p>
+                        </div>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Video</p>
+                            <p><strong>URL:</strong> <a href="https://www.youtube.com/watch?v=u0H5YFAXmc8" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=u0H5YFAXmc8</a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = `Gandia has one of the longest and most extensive beaches with almost 7 km of fine sand. The coastline divides this area into 4 beaches: Els Marenys de Raflacaid, Venice beach, Nord beach and l’Ahuir beach. The most touristic and important beach is the Nord beach, which has all the safety, quality and environmental certifications. In the 1960s, with the national tourism boom, Gandia beach had a rapid development: the construction of hotels, apartments and the promenade began. It is currently one of the main tourist destinations in the Mediterranean due to its quality of the sand and the waters, certified by the blue flag, a European quality seal that it has received for the last 34 years in a row. It offers all kinds of water activities in the yacht club: sailing, rowing, windsurfing, etc., as well as cultural activities on the seafront during the summer, volleyball sports competitions and all kinds of daytime and nightlife.
+`;
+            var localDesc = `Gandia tiene una de las playas más largas y extensas con casi 7 km de fina arena. El litoral divide esta zona en 4 playas: Els Marenys de Raflacaid, playa de Venecia, playa Nord i la playa de l’Ahuir. La playa más turística e importante es la playa Nord que cuenta con todas las certificaciones de seguridad, calidad y medio ambiente. En la década de los 60, con el boom del turismo nacional, la playa de Gandia tuvo un rápido desarrollo: comenzó la construcción de hoteles, apartamentos y del paseo marítimo. Actualmente es uno de los principales destinos turísticos del Mediterráneo por su atractivo en la calidad de la arena y las aguas con el distintivo que recibe de bandera azul, sello europeo de calidad que ha recibido los último 34 años de manera consecutiva. Ofrece todo tipo de actividades acuáticas en el club náutico: vela, remo, windsurf, etc, además de actividades culturales en el paseo marítimo durante el verano, competiciones deportivas de vóleibol y todo tipo de ocio diurno y nocturno.`;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>

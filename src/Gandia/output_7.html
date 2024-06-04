@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La platja de l'Ahuir</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>La platja de l'Ahuir (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/b023dee0c92c36a9be49b94597b01b982478483020200914103936.jpg" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description">Between the crowded northern beach of Gandia and the first buildings in the municipality of Xeraco, two kilometers of sand have survived the urban pressure that characterizes the Mediterranean coasts. L’Auir, in the region of La Safor, is one of the few unspoilt beaches on the Valencian coast that preserves the dune system intact. It is named after an ancient canal from the 12th century, which ran through some rural areas of the municipalities of Gandia, Xeresa and Xeraco. In the first line, herbaceous species grow, responsible for accumulating sand thanks to an extensive root system. In later areas, the substrate is better fixed thanks to the woody plants. Next is the brackish area where reeds grow, and finally a typical Mediterranean forest with pines and mastic trees. Urban pressure and intense tourist uses have led to a radical alteration of the sandy coasts. In the Auir, you can still enjoy a redoubt of this practically lost habitat, as long as you pass through the enabled spaces, without smashing the dunes and with a deep respect for what they house and represent.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> undefined</p>
+                            <p><strong>URL:</strong> <a href="" target="_blank" rel="noopener noreferrer"></a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = `Between the crowded northern beach of Gandia and the first buildings in the municipality of Xeraco, two kilometers of sand have survived the urban pressure that characterizes the Mediterranean coasts. L’Auir, in the region of La Safor, is one of the few unspoilt beaches on the Valencian coast that preserves the dune system intact. It is named after an ancient canal from the 12th century, which ran through some rural areas of the municipalities of Gandia, Xeresa and Xeraco. In the first line, herbaceous species grow, responsible for accumulating sand thanks to an extensive root system. In later areas, the substrate is better fixed thanks to the woody plants. Next is the brackish area where reeds grow, and finally a typical Mediterranean forest with pines and mastic trees. Urban pressure and intense tourist uses have led to a radical alteration of the sandy coasts. In the Auir, you can still enjoy a redoubt of this practically lost habitat, as long as you pass through the enabled spaces, without smashing the dunes and with a deep respect for what they house and represent.`;
+            var localDesc = `Entre la massificada platja nord de Gandia i els primers edificis del terme de Xeraco, dos quilòmetres d’arena han sobreviscut a la pressió urbanística que caracteritza les costes mediterrànies. L’Auir, a la comarca de la Safor, és una de les poques platges verges del litoral valencià que conserva intacte el sistema dunar. Rep el nom d'una antiga sèquia del segle XII, que recorria algunes partides rurals dels municipis de Gandia, Xeresa i Xeraco. En una primera línia, creixen espècies herbàcies, encarregades d’acumular arena gràcies a un extens sistema d’arrels. A les zones posteriors, el substrat està millor fixat gràcies a les plantes llenyoses. A continuació, es troba l’àrea del salobrar on creixen els joncs i, finalment, s’estén un bosc típic mediterrani amb pins i llentiscles. La pressió urbanística i els intensos usos turístics han suposat una alteració radical de les costes arenoses. A l’Auir, encara es pot gaudir d’un reducte d’aquest hàbitat pràcticament perdut, sempre i quan es transite pels espais habilitats, sense xafar les dunes i amb un profund respecte pel que aquestes alberguen i representen. `;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>

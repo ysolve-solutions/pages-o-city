@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Monasterio de Santa Clara</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>Real Monasterio de Santa Clara (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/fda20ff1191a1db60fba2af0e7507adddb7907ac1600157914.JPG" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description">Founded in 1429 by Sor Violante Aragón, daughter of the Infante Don Alfonso the Elder, I Duke of Gandía, this foundation lasts only 15 years. This would be re-founded by ten nuns of the Order of the Poor Sisters of Santa Clara who came from the Ave María Monastery in Lézignan-Corbiéres, France. With the help of Don Luis de Vich Noble Militar Valenciano, the Monastery was restored. There were no shortage of notable religious for Nobility and to highlight Sister Magdalena de Jaso and Javier, sister of San Francisco Javier. There have been up to thirty-three nuns of the Borja family in the Monastery, including María Enríquez de Luna, Duquesa de Gandía, who entered with the name of Sister Gabriela. She became Abbess in 1530 and died nine years later. Later, she would be her daughter, Sister Francisca de Jesús de Borja chosen as Abbess. During the Spanish Civil War it was occupied by military troops, for almost seven years the nuns had to live narrowly in the chaplain's house. Until 1943 they were given the keys to the Monastery which had to be repaired. The community of Santa Clara continues to live in this home in Gandía, it is possible to visit the Gothic-style church that is located on the right side of the building, Perpetual Adoration Chapel open 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> undefined</p>
+                            <p><strong>URL:</strong> <a href="" target="_blank" rel="noopener noreferrer"></a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = `Founded in 1429 by Sor Violante Aragón, daughter of the Infante Don Alfonso the Elder, I Duke of Gandía, this foundation lasts only 15 years. This would be re-founded by ten nuns of the Order of the Poor Sisters of Santa Clara who came from the Ave María Monastery in Lézignan-Corbiéres, France. With the help of Don Luis de Vich Noble Militar Valenciano, the Monastery was restored. There were no shortage of notable religious for Nobility and to highlight Sister Magdalena de Jaso and Javier, sister of San Francisco Javier. There have been up to thirty-three nuns of the Borja family in the Monastery, including María Enríquez de Luna, Duquesa de Gandía, who entered with the name of Sister Gabriela. She became Abbess in 1530 and died nine years later. Later, she would be her daughter, Sister Francisca de Jesús de Borja chosen as Abbess. During the Spanish Civil War it was occupied by military troops, for almost seven years the nuns had to live narrowly in the chaplain's house. Until 1943 they were given the keys to the Monastery which had to be repaired. The community of Santa Clara continues to live in this home in Gandía, it is possible to visit the Gothic-style church that is located on the right side of the building, Perpetual Adoration Chapel open 24 hours.`;
+            var localDesc = `Fundado en el año 1429 por Sor Violante Aragón, hija del Infante Don Alfonso el viejo, I Duque de Gandía, esta fundación dura tan solo 15 años. Este sería refundado por diez mojas de la Orden Hermanas Pobres de Santa Clara venidas desde el Monasterio del Ave María de Lézignan-Corbiéres, Francia. Con la ayuda de Don Luis de Vich Noble Militar Valenciano, se restauró el Monasterio. No faltaron religiosas notables por Nobleza y destacar a Sor Magdalena de Jaso y Javier hermana de San Francisco Javier. Han sido hasta treinta y tres religiosas de la familia Borja en el Monasterio entre ellas cabe destacar a María Enríquez de Luna Duquesa de Gandía, ingreso con el nombre de Sor Gabriela. Se convirtió en Abadesa en 1530 y falleció nueve años después, Más tarde sería su hija, Sor Francisca de Jesús de Borja elegida como Abadesa. Durante la guerra Civil Española fue ocupado por tropas militares, durante casi siete años las religiosas tuvieron que vivir angostamente en la casa del capellán. Hasta 1943 les entregaron las llaves del Monasterio que tuvo que ser reparado. Sigue viviendo la comunidad de Santa Clara en esta su casa de Gandía, es posible visitar la iglesia de estilo gótico que se encuentra en la parte derecha de la edificación, Capilla de Adoración Perpetua abierto 24 horas.`;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>

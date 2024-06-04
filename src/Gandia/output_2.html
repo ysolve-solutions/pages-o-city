@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tio de la Porra</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>Tio de la Porra (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/fdc32f69899dcfc883b9193f0e0c75e539d0420920210209175847.jpg" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description">The Tio de la Porra (Baton's Guy) is a fiction character who calls the celebration of the festivities in Gandia, considered a cultural heritage of the city and also of the Valencian Community. It is part of its ethnological heritage and its cultural tradition. The historical origin of the character is the Major Drummer of the national militia, heiress of the Spanish regiment. Its mission was to transmit information between the government and the city in the 19th century, also the announcement of the festivities. Since 1934, the Tio de la Porra accompanied by a drums band goes through the schools to announce the start of the Fair and festivities, and then children are allowed to go out because holidays start.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> El Tío de la Porra 2019</p>
+                            <p><strong>URL:</strong> <a href="https://www.youtube.com/watch?v=QNWDhCOVe80" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=QNWDhCOVe80</a></p>
+                        </div>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> El Tío de la Porra 2014</p>
+                            <p><strong>URL:</strong> <a href="https://www.youtube.com/watch?v=IUx7Zm5ncjs" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=IUx7Zm5ncjs</a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = `The Tio de la Porra (Baton's Guy) is a fiction character who calls the celebration of the festivities in Gandia, considered a cultural heritage of the city and also of the Valencian Community. It is part of its ethnological heritage and its cultural tradition. The historical origin of the character is the Major Drummer of the national militia, heiress of the Spanish regiment. Its mission was to transmit information between the government and the city in the 19th century, also the announcement of the festivities. Since 1934, the Tio de la Porra accompanied by a drums band goes through the schools to announce the start of the Fair and festivities, and then children are allowed to go out because holidays start.`;
+            var localDesc = `El Tío de la Porra es un personaje de ficción que se encarga de anunciar el inicio de las fiestas en Gandia, considerada patrimonio cultural de la ciudad y también de la Comunitat Valenciana. Forma parte de su patrimonio etnológico y de su tradición cultural. El origen histórico del personaje es el Mayor Baterista de la milicia nacional, heredera del regimiento español. Su misión era transmitir información y anunciar las festividades entre el gobierno y la ciudad en el siglo XIX. Desde 1934, el Tío de la Porra acompañado de una banda de tambores recorre los colegios para anunciar el inicio de la Feria y las fiestas. Desde 2002, se celebra también la cabalgata con un texto teatralizado del s. XIX.`;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>

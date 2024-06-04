@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cueva del Parpalló</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>Cueva del Parpalló (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/efbef7c165e6d47d93e0e6012fde000e4ab9668b1629367155.jpg" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description">The Parpalló cave is located within the Parpalló-Borrell Municipal Natural Park, a protected natural area of 560 ha. located in the municipality of Gandia, which was declared by the Consell de la Generalitat Valenciana as a Protected Natural Area. It is listed as an Asset of Cultural Interest and, since 2008, is in the process of review by UNESCO to be declared World Heritage of Humanity. It is about 400 meters above sea level on the southern slopes of Mondúber, a mountain massif from the Cretaceous period.
+
+In the Parpalló cave, the largest collection of prehistoric movable art in Europe has been found. Its chronology covers the entire Upper Paleolithic. It is made up of more than 6,000 limestone plaquettes with symbolic and animal representations. It is therefore one of the most important archaeological treasures of the Iberian Peninsula, and makes it one of the most important archaeological sites on the continent. In the Museum of Prehistory of Valencia and in the Archaeological Museum of Gandía (MAGa) some of the best plaquettes of the cave are exhibited. We can also see some reproductions in the Parpalló-Borrell Interpretation Center.
+
+The entrance to the cave is presented as a large crevice 15 meters high and 4 meters wide, named after a bird that used to live near the cave. In Spanish it is known as "avión" (Riparia, riparia). It differs from the swift and the swallow because the plane has a black body and white belly, the swallow also has a black body and white belly but a reddish throat, and the swift is completely black.21,000 years ago begins the most important stage of occupation, the period known as Solutrense, until about 17,000-15,000 years ago, coinciding with the period of maximum glacial cold. It is the stage that has offered more archaeological remains and the one of the maximum production of engraved and painted plaques. From 17,000-15,000 years ago until 11,000 years ago, during the Magdalenian period, the cave continued to be occupied with the same intensity.
+Before being discovered as an archaeological site, the cave was used as a shelter for shepherds and their flocks. It was also known for having "fire stones", i.e. flints, which were used by the nearby peasants for their lighters.
+
+The site was discovered by Joan Vilanova i Piera during a survey in 1872. Shortly after, he published some of the material discovered. After this news, the cave was visited by some amateurs and researchers, such as the naturalist Eduard Boscà or Father Leandro Calvo, who also collected some archaeological materials. The inhabitants of the Upper Paleolithic were Homo sapiens sapiens, intellectually and physically similar to us. They were nomadic and had a high territorial mobility since their main prey also had constant movements. The places where they lived, such as the Parpalló, would have been occupied seasonally.
+
+The inhabitants of Parpalló lived by specialized hunting, gathering plants and vegetable fruits and, occasionally, fishing for fish or mollusks. They perfected hunting techniques, especially through the development of new throwing weapons, such as the propeller and the bow. They also perfected the manufacture of lithic and bone tools, and to hunt deer and goats, they watched and followed them. This is not at all easy and implies a good social organization and a network of surveillance and control of the habits of the fauna.
+The slaughtered animals were transported whole to the cave, which indicates that the hunting sites were close to the cave. Natural food preservation techniques such as filleting and subsequent smoking or air-drying were known. Bone marrow was also consumed by fracturing or boiling the bones.
+
+Preferred prey were deer, wild goats and rabbits. To a lesser extent horses and aurochs. Rabbits and other small prey, such as birds, played a complementary role in the diet, as did marine and river resources, especially at the end of the cave occupation period.
+</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Ayuntamiento de Gandia</p>
+                            <p><strong>URL:</strong> <a href="https://gandia.es/aytg/web_php/index.php?contenido=descripcion&id_boto=599&contenido=descripcion&id_boto=599" target="_blank" rel="noopener noreferrer">https://gandia.es/aytg/web_php/index.php?contenido=descripcion&id_boto=599&contenido=descripcion&id_boto=599</a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = `The Parpalló cave is located within the Parpalló-Borrell Municipal Natural Park, a protected natural area of 560 ha. located in the municipality of Gandia, which was declared by the Consell de la Generalitat Valenciana as a Protected Natural Area. It is listed as an Asset of Cultural Interest and, since 2008, is in the process of review by UNESCO to be declared World Heritage of Humanity. It is about 400 meters above sea level on the southern slopes of Mondúber, a mountain massif from the Cretaceous period.
+
+In the Parpalló cave, the largest collection of prehistoric movable art in Europe has been found. Its chronology covers the entire Upper Paleolithic. It is made up of more than 6,000 limestone plaquettes with symbolic and animal representations. It is therefore one of the most important archaeological treasures of the Iberian Peninsula, and makes it one of the most important archaeological sites on the continent. In the Museum of Prehistory of Valencia and in the Archaeological Museum of Gandía (MAGa) some of the best plaquettes of the cave are exhibited. We can also see some reproductions in the Parpalló-Borrell Interpretation Center.
+
+The entrance to the cave is presented as a large crevice 15 meters high and 4 meters wide, named after a bird that used to live near the cave. In Spanish it is known as "avión" (Riparia, riparia). It differs from the swift and the swallow because the plane has a black body and white belly, the swallow also has a black body and white belly but a reddish throat, and the swift is completely black.21,000 years ago begins the most important stage of occupation, the period known as Solutrense, until about 17,000-15,000 years ago, coinciding with the period of maximum glacial cold. It is the stage that has offered more archaeological remains and the one of the maximum production of engraved and painted plaques. From 17,000-15,000 years ago until 11,000 years ago, during the Magdalenian period, the cave continued to be occupied with the same intensity.
+Before being discovered as an archaeological site, the cave was used as a shelter for shepherds and their flocks. It was also known for having "fire stones", i.e. flints, which were used by the nearby peasants for their lighters.
+
+The site was discovered by Joan Vilanova i Piera during a survey in 1872. Shortly after, he published some of the material discovered. After this news, the cave was visited by some amateurs and researchers, such as the naturalist Eduard Boscà or Father Leandro Calvo, who also collected some archaeological materials. The inhabitants of the Upper Paleolithic were Homo sapiens sapiens, intellectually and physically similar to us. They were nomadic and had a high territorial mobility since their main prey also had constant movements. The places where they lived, such as the Parpalló, would have been occupied seasonally.
+
+The inhabitants of Parpalló lived by specialized hunting, gathering plants and vegetable fruits and, occasionally, fishing for fish or mollusks. They perfected hunting techniques, especially through the development of new throwing weapons, such as the propeller and the bow. They also perfected the manufacture of lithic and bone tools, and to hunt deer and goats, they watched and followed them. This is not at all easy and implies a good social organization and a network of surveillance and control of the habits of the fauna.
+The slaughtered animals were transported whole to the cave, which indicates that the hunting sites were close to the cave. Natural food preservation techniques such as filleting and subsequent smoking or air-drying were known. Bone marrow was also consumed by fracturing or boiling the bones.
+
+Preferred prey were deer, wild goats and rabbits. To a lesser extent horses and aurochs. Rabbits and other small prey, such as birds, played a complementary role in the diet, as did marine and river resources, especially at the end of the cave occupation period.
+`;
+            var localDesc = `La cueva del Parpalló se encuentra situada dentro del Paraje Natural Municipal Parpalló-Borrell, espacio natural protegido de 560 ha. localizado en el término municipal de Gandia, el cual fue declarado por el Consell de la Generalitat Valenciana como Espacio Natural Protegido. Está catalogada como Bien de Interés Cultural y, desde el año 2008, está en proceso de revisión por la UNESCO para ser declarada Patrimonio Mundial de la Humanidad. Está a unos 400  metros sobre el nivel de la mar en la vertiente sur del Mondúber, macizo montañoso del periodo cretáceo.
+
+En la cueva de Parpalló se ha encontrado el mayor conjunto de arte mueble prehistórico de Europa. Su cronología abarca todo el Paleolítico Superior. Lo componen más de 6.000 plaquetas de piedracaliza con representaciones simbólicas y de animales. Es por tanto uno de los más importantes tesoros arqueológicos de  la Península Ibérica, y la convierte en uno de los yacimientos arqueológicos más importantes del continente. En el Museo de Prehistoria de Valencia y en el Museo Arqueológico de Gandía (MAGa) se encuentran expuestas algunas de las mejores plaquetas de la cueva. También podemos ver algunas reproducciones en el Centro de Interpretación Parpalló-Borrell.
+
+La entrada de la cueva se presenta como una gran grieta de 15 metros de alto por 4 de ancho.Toma su nombre de un ave que solía habitar cerca de la cueva. En castellano se le conoce como avión (Riparia, riparia). Se diferencia del vencejo y de la golondrina porque el avión tiene el cuerpo negro y el vientre blanco, la golondrina tiene también el cuerpo negro y el vientre blanco pero la garganta de color rojizo, y el vencejo es totalmente negro.Hace unos 21.000 años empieza la etapa de ocupación más importante, al periodo conocido como Solutrense, hasta hace aproximadamente 17.000–15.000 años, coincidiendo con el periodo de máximo frío glacial. Es la etapa que más restos arqueológicos ha ofrecido y la de la máxima producción de plaquetas grabadas y pintadas. Desde hace 17.000–15.000 y hasta hace 11.000 años, durante el Magdaleniense, se continúa ocupando la cueva con la misma intensidad.
+Antes de ser descubierta como yacimiento arqueológico, la cueva era utilizada como refugio de pastores y rebaño. También era conocida por que tenía "piedras de fuego", es decir, pedernales, que usaban los campesinos de las cercanías para sus mecheros.
+
+El yacimiento fue descubierto por Joan Vilanova i Piera en unas prospecciones el 1872. Poco después publicó parte del material descubierto. Después de esta noticia, la cueva fue visitada por algunos aficionados e investigadores, como el naturalista Eduard Boscà o el Padre Leandro Calvo, que también recogieron algunos materiales arqueológicos. Los habitantes del Paleolítico superior eran Homo sapiens sapiens, intelectual y físicamente similares a nosotros. Eran nómadas y tenían una alta movilidad territorial puesto que sus presas principales también tenían constantes movimientos. Los lugares donde vivían, como el Parpalló, estarían ocupados estacionalmente.
+
+Los habitantes del Parpalló vivían de la caza especializada, de la recolección de plantas y frutos vegetales y, puntualmente, de la pesca pescados o moluscos. Perfeccionaron las técnicas de caza, sobre todo mediante el desarrollo de nuevas armas arrojadizas, como el propulsor y el arco. También se perfeccionó la fabricación de herramientas líticas y de hueso.Para cazar ciervos y cabras, los vigilaban y seguían. Esto no es nada fácil e implica una buena organización social y una red de vigilancia y control de los hábitos de la fauna.
+Los animales abatidos se trasladaban enteros a la cueva, lo que indica que los lugares de caza estarían cerca de la cueva.No toda la carne era consumida al instante. Se conocían técnicas de conservación natural de los alimentos como el fileteado y posterior ahumado o secado al aire libre. También se consumía la médula ósea fracturando o hirviendo los huesos.
+
+Las presas preferentes eran los ciervos, las cabras salvajes y los conejos. En menor medida caballos y uros. Los conejos y otras presas pequeñas, como las aves, desarrollaron un papel complementario en la alimentación, como también los recursos marinos y fluviales, especialmente al final del periodo de ocupación de la cueva.
+`;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>

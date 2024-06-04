@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castillo de Bairén</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>Castillo de Bairén (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/e27878912746f9808fac7dc4e501028a33a9587e1626890388.jpg" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description">It is also known as the Castle of San Juan, was the most important fortification of the Safor region. The castle in the eighth century, was used by the Arabs as a defense because of the security provided by its geographical location.
+In the year 1097 during the battle between the Cid and the Saracens they attacked him from the castle and from the boats. Despite its advantages, the castle fell in 1240. It should be noted that the castle was not completely destroyed during these battles, but during the civil war some of the remaining parts were destroyed.
+</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Castell Bairén</p>
+                            <p><strong>URL:</strong> <a href="https://www.bairen.es/" target="_blank" rel="noopener noreferrer">https://www.bairen.es/</a></p>
+                        </div>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Gandía Turística</p>
+                            <p><strong>URL:</strong> <a href="http://www.gandiaturistica.com/castillo-bayren.htm#:~:text=Castillo%20Bayren.%20El%20Castillo%20de%20Bayren%20de%20Gandia%2C,a%20la%20seguridad%20que%20proporcionaba%20su%20situaci%C3%B3n%20geogr%C3%A1fica." target="_blank" rel="noopener noreferrer">http://www.gandiaturistica.com/castillo-bayren.htm#:~:text=Castillo%20Bayren.%20El%20Castillo%20de%20Bayren%20de%20Gandia%2C,a%20la%20seguridad%20que%20proporcionaba%20su%20situaci%C3%B3n%20geogr%C3%A1fica.</a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = `It is also known as the Castle of San Juan, was the most important fortification of the Safor region. The castle in the eighth century, was used by the Arabs as a defense because of the security provided by its geographical location.
+In the year 1097 during the battle between the Cid and the Saracens they attacked him from the castle and from the boats. Despite its advantages, the castle fell in 1240. It should be noted that the castle was not completely destroyed during these battles, but during the civil war some of the remaining parts were destroyed.
+`;
+            var localDesc = `Se conoce también como el Castillo de San Juan, fue la fortificación más importante de la comarca de la Safor. El Castillo en el siglo VIII, fue utilizado por los árabes como defensa debido a la seguridad que proporcionaba su situación geográfica.
+En el año 1097 durante la batalla entre el Cid y los sarracenos éstos le atacaron desde el castillo y desde las embarcaciones. A pesar de sus ventajas el castillo cayó en el año 1240. Cabe resaltar que el castillo no fue destruido completamente durante estas batallas , pero durante la guerra civil se destruyeron algunas partes que quedaban.
+`;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>

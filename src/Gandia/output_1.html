@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marjal de Gandía</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>Marjal de Gandía (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/a22175744a10411170666325f4bad3d0a9610f1220211115132547.jpg" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description"> The Marjal de Gandia occupies 37% of the total surface of the Marjal de la Safor, that is to say about 450 Ha of the total extension of 1,225 Ha. Geographically and morphologically, it is a humid zone developed in a coastal plain and that presents a great biodiversity of flora and fauna. The water supply of this ecosystem comes from groundwater, which emerges through springs called ullal. It is important to highlight its high ecological values: flood control, landscape value, water quality regulation and high biodiversity; that is why it constitutes a patrimonial asset with an important scientific, pedagogical, recreational and cultural value.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Information</p>
+                            <p><strong>URL:</strong> <a href="https://www.gandia.es/aytg/web_php/index.php?contenido=descripcion&id_boto=91&contenido=descripcion&id_boto=91" target="_blank" rel="noopener noreferrer">https://www.gandia.es/aytg/web_php/index.php?contenido=descripcion&id_boto=91&contenido=descripcion&id_boto=91</a></p>
+                        </div>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Videos</p>
+                            <p><strong>URL:</strong> <a href="https://www.youtube.com/watch?v=Joo__8lGyYY" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=Joo__8lGyYY</a></p>
+                        </div>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Videos</p>
+                            <p><strong>URL:</strong> <a href="https://www.youtube.com/watch?v=LDplqJRhpKI" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=LDplqJRhpKI</a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = ` The Marjal de Gandia occupies 37% of the total surface of the Marjal de la Safor, that is to say about 450 Ha of the total extension of 1,225 Ha. Geographically and morphologically, it is a humid zone developed in a coastal plain and that presents a great biodiversity of flora and fauna. The water supply of this ecosystem comes from groundwater, which emerges through springs called ullal. It is important to highlight its high ecological values: flood control, landscape value, water quality regulation and high biodiversity; that is why it constitutes a patrimonial asset with an important scientific, pedagogical, recreational and cultural value.`;
+            var localDesc = `La Marjal de Gandia ocupa el 37% de la superficie total del Marjal de la Safor, es decir unas 450 Ha de la extensión total de 1.225 Ha. Geográfica y morfológicamente, es una zona húmeda desarrollada en una planicie costera y que presenta gran biodiversidad de flora y fauna. El suministro de agua de este ecosistema proviene del agua subterránea, que emerge a través de manantiales llamados ullal. Es importante destacar sus altos valores ecológicos: control de inundaciones, valor paisajístico, regulación de la calidad del agua y alta biodiversidad; por eso constituye un bien patrimonial con un importante valor científico, pedagógico, recreativo y cultural.`;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>

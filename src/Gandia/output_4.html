@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palau Ducal Borja</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>Palau Ducal Borja (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/97d9f763eb4a6ab997578d29db235c332b788dd920210513125214.jpg" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description">The Palacio Ducal de los Borja de Gandia, declared an Asset of Cultural Interest since 1964, is one of the most representative civil buildings of the Valencian historical heritage. Located in the historic center, next to the Collegiate Church of Santa María and the City Hall, it has witnessed the evolution of the history of the capital of Safor since its birth. Its interior hosts a varied display of architectural styles, with vestiges of the original Gothic palace of the XIV and XV centuries, Renaissance contributions of the XVI, extensions and Baroque transformations typical of the XVII and XVIII centuries, and finally neo-Gothic reconstructions of the late XIX century and early XX. It is a sample of the splendor of Gandia in the years in which the Borja family's relations with the Vatican allowed the city's economic growth and development.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Information</p>
+                            <p><strong>URL:</strong> <a href="https://www.palauducal.com/ " target="_blank" rel="noopener noreferrer">https://www.palauducal.com/ </a></p>
+                        </div>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Videos</p>
+                            <p><strong>URL:</strong> <a href="https://www.youtube.com/watch?v=3o1oupMSfGQ" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=3o1oupMSfGQ</a></p>
+                        </div>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> Videos</p>
+                            <p><strong>URL:</strong> <a href="https://www.youtube.com/watch?v=1ftu9lprQMc" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=1ftu9lprQMc</a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = `The Palacio Ducal de los Borja de Gandia, declared an Asset of Cultural Interest since 1964, is one of the most representative civil buildings of the Valencian historical heritage. Located in the historic center, next to the Collegiate Church of Santa María and the City Hall, it has witnessed the evolution of the history of the capital of Safor since its birth. Its interior hosts a varied display of architectural styles, with vestiges of the original Gothic palace of the XIV and XV centuries, Renaissance contributions of the XVI, extensions and Baroque transformations typical of the XVII and XVIII centuries, and finally neo-Gothic reconstructions of the late XIX century and early XX. It is a sample of the splendor of Gandia in the years in which the Borja family's relations with the Vatican allowed the city's economic growth and development.`;
+            var localDesc = `El Palacio Ducal de los Borja de Gandia, declarado Bien de Interés Cultural desde 1964, es uno de los edificios civiles más representativos del patrimonio histórico valenciano. Situado en el centro histórico, junto a la Colegiata de Santa María y el Ayuntamiento, ha sido testigo de la evolución de la historia de la capital de la Safor desde su nacimiento. Su interior alberga una variada muestra de estilos arquitectónicos, con vestigios del palacio gótico original de los siglos XIV y XV, aportes renacentistas del XVI, ampliaciones y transformaciones barrocas propias de los siglos XVII y XVIII, y finalmente reconstrucciones neogóticas de finales del siglo XIX y principios del XX. Es una muestra del esplendor de Gandia en los años en los que las relaciones de la familia Borja con el Vaticano permitieron un crecimiento y desarrollo económico de la ciudad.`;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>

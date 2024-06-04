@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'arbre del Tirant</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="App">
+        <header class="border-solid border-2 border-indigo-600">
+            <div class='container max-width flex flex-row'>
+                <p class='basis-1/2'>hola</p>
+                <p class='basis-1/2'>hola</p>
+            </div>
+        </header>
+        <div class='flex justify-center border-solid border-2 border-indigo-600'>
+            <div class='container max-width'>
+                <div class='flex flex-row'>
+                    <a href="https://www.google.com" class='basis-1/4'>Countries</a>
+                    <a href="https://www.google.com" class='basis-1/4'>ES</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Comunidad Valenciana</a>
+                    <a href="https://www.google.com" class='basis-1/4'>Gandia</a>
+                </div>
+                <div class='container max-width'>
+                    <div class='flex flex-col mt-10'>
+                        <h1>L'arbre del Tirant (Gandia)</h1>
+                        <h2><a href='https://google.com'>View on OCity map</a></h2>
+                    </div>
+                    <div class='flex flex-row'>
+                        <img src="https://o-city.org/manifestations_media/ec5ce74602dc2326e6107e25814382923abd915d1595323954.jpeg" alt='imagen' class='w-1/2'></img>
+                        <div>
+                            <button id="toggleDescriptionButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Change to Local Language</button>
+                            <p id="description">The sculptor Ramón de Soto, created this work at the request of the Gandia City Council in 1990 to commemorate the five centuries since the publication of the novel "Tirant lo Blanch" by Joanot Martorell. The figure of red metallic tubes suggests in an abstract way a medieval knight on a horse next to a large tree, in total it measures 20 meters high. The monument that was not understood and had an unpopular reception after its first installation was removed. The history of this sculpture has been very eventful, because after being removed from its original place, it was abandoned for more than 10 years, being later rebuilt by Joan Sapena. In September 2012 it suffered the consequences of the tornado that devastated the fair that was mounted at that time and the statue itself, for which a second restoration took place years later. Today it is located in the same enclosure with the restored area enhancing the figure of heritage due to the nature that surrounds it.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='flex flex-col mt-4'>
+                    <p><strong>Links of interest:</strong></p>
+                    
+                        <div class='mb-2'>
+                            <p><strong>Description:</strong> undefined</p>
+                            <p><strong>URL:</strong> <a href="" target="_blank" rel="noopener noreferrer"></a></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showLocalDescription = false;
+            var buttonText = "Change to Local Language";
+            var defaultDesc = `The sculptor Ramón de Soto, created this work at the request of the Gandia City Council in 1990 to commemorate the five centuries since the publication of the novel "Tirant lo Blanch" by Joanot Martorell. The figure of red metallic tubes suggests in an abstract way a medieval knight on a horse next to a large tree, in total it measures 20 meters high. The monument that was not understood and had an unpopular reception after its first installation was removed. The history of this sculpture has been very eventful, because after being removed from its original place, it was abandoned for more than 10 years, being later rebuilt by Joan Sapena. In September 2012 it suffered the consequences of the tornado that devastated the fair that was mounted at that time and the statue itself, for which a second restoration took place years later. Today it is located in the same enclosure with the restored area enhancing the figure of heritage due to the nature that surrounds it.`;
+            var localDesc = `El escultor Ramón de Soto, creó esta obra por petición del Ayuntamiento de Gandia en 1990 para conmemorar los cinco siglos de la publicación de la novela “Tirant lo Blanch” de Joanot Martorell. La figura de tubos metálicos rojos sugiere de forma abstracta a un caballero medieval en un caballo junto a un gran árbol, en total mide 20 metros de alto. El monumento que no fue comprendido y tuvo una acogida impopular tras su primera instalación se quitó. La historia de esta escultura ha sido muy accidentada, pues tras ser retirada de su lugar original, estuvo abandonada durante más de 10 años, siendo posteriormente reconstruída por Joan Sapena. En septiembre de 2012 sufrió las consecuencias del tornado que asoló la feria que en esas fechas estaba montada y la propia estatua, por lo que tuvo lugar una segunda restauración años después. Hoy en día se encuentra en el mismo recinto con la zona restaurada realzando la figura del patrimonio debido a la naturaleza que la rodea. `;
+            
+            var button = document.getElementById("toggleDescriptionButton");
+            var description = document.getElementById("description");
+            
+            button.addEventListener("click", function() {
+                showLocalDescription = !showLocalDescription;
+                buttonText = showLocalDescription ? "Change to English" : "Change to Local Language";
+                description.textContent = showLocalDescription ? localDesc : defaultDesc;
+                button.textContent = buttonText;
+            });
+        });
+    </script>
+</body>
+</html>
