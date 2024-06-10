@@ -1,13 +1,21 @@
-import React from 'react'
-//import cityData from './ocity.json';
-export const PrimerComponente = () => {
-   /* <p>{cityData.data[0].manifestation_name}</p> */
-
+import React from 'react';
+import { Button, Flex} from 'antd';
+const boxStyle = {
+  width: '100%',
+  height: 90,
+  borderRadius: 6,
+  border: '1px solid #40a9ff',
+};
+export const Header = () => {
   return (
-    <div className='container max-width, flex flex-row'>
-        
-        <p className='basis-1/2'>hola</p>
-        <p className='basis-1/2'>hola</p>
-    </div>
-  )
-}
+    <Flex gap="middle" align="start" vertical>
+      <Flex style={boxStyle} justify={'space-around'} align={'center'}>
+        <Button type="primary">Primary</Button>
+        <Button type="primary">Primary</Button>
+        <Button type="primary">Primary</Button>
+        <Button type="primary">Primary</Button>
+      </Flex>
+    </Flex>
+  );
+};
+export default Header;
