@@ -1,9 +1,21 @@
 import React from 'react';
-import cityData from './ocity.json';
 import { TercerComponente } from '../pages/TercerComponente';
+import { Button, Flex } from 'antd';
+import { Row, Col, Typography } from 'antd';
+const { Text, Link } = Typography;
 
-export const SegundoComponente = () => {
-  const rawLinksInteres = cityData.data?.[0]?.links_interest || "[]";
+const boxStyle = {
+  width: '100%',
+  height: 90,
+  borderRadius: 6,
+  border: '1px solid #40a9ff',
+  display: 'flex',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+};
+
+export const SegundoComponente = ({ data }) => {
+  const rawLinksInteres = data.links_interest || "[]";
   let linksinteres = [];
 
   try {
@@ -14,24 +26,34 @@ export const SegundoComponente = () => {
 
   return (
     <div className='container max-width'>
-      <div className='flex flex-row'>
-        <a href="https://www.google.com" className='basis-1/4'>Countries</a>
-        <a href="https://www.google.com" className='basis-1/4'>{cityData.data?.[0]?.country}</a>
-        <a href="https://www.google.com" className='basis-1/4'>Comunidad Valenciana</a>
-        <a href="https://www.google.com" className='basis-1/4'>{cityData.data?.[0]?.city_name_aux}</a>
-      </div>
-      <TercerComponente />
-      <div className='flex flex-col mt-4'>
-        <p><strong>Links of interest:</strong></p>
+      <Flex gap="middle" align="start" vertical>
+        <Flex style={boxStyle}>
+          <Button type="text">Countries</Button>
+          <Button type="text">{data.country}</Button>
+          <Button type="text">Comunidad Valenciana</Button>
+          <Button type="text">{data.city_name_aux}</Button>
+        </Flex>
+      </Flex>
+      <TercerComponente data={data} />
+      <div className='mt-4'>
+        <Text strong>Links of interest:</Text>
         {linksinteres.length > 0 ? (
           linksinteres.map((link, index) => (
-            <div key={index} className='mb-2'>
-              <p><strong>Description:</strong> {link.description}</p>
-              <p><strong>URL:</strong> <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</a></p>
-            </div>
+            <Row key={index} gutter={[16, 16]} className='mb-2'>
+              <Col span={24}>
+                <Text strong>Description:</Text> {link.description}
+              </Col>
+              <Col span={24}>
+                <Text strong>URL:</Text> <Link href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</Link>
+              </Col>
+            </Row>
           ))
         ) : (
-          <p>No links available</p>
+          <Row>
+            <Col span={24}>
+              <Text>No links available</Text>
+            </Col>
+          </Row>
         )}
       </div>
     </div>
