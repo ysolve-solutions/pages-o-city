@@ -6,7 +6,7 @@ function App({data}) {
   return (
     <div className="App">
       <header className="border-solid border-2 border-indigo-600">
-      <Header />
+      <Header data={data}/>
       </header>
       <div className='flex justify-center border-solid border-2 border-indigo-600'>
       <SegundoComponente data={data}/>

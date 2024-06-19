@@ -8,7 +8,7 @@ const boxStyle = {
   width: '100%',
   height: 90,
   borderRadius: 6,
-  border: '1px solid #40a9ff',
+  //border: '1px solid #40a9ff',
   display: 'flex',
   justifyContent: 'space-around',
   alignItems: 'center',

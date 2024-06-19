@@ -1,0 +1,13 @@
+.header-container {
+    background-color: #f0f0f0; /* Color de fondo gris */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .title-large {
+    font-size: 2.5em; /* Tamaño grande para los títulos */
+    text-align: center;
+  }
+  
