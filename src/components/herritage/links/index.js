@@ -1,5 +1,5 @@
 import React from 'react';
-import { TercerComponente } from '../pages/TercerComponente';
+import { TercerComponente } from '../../pages/TercerComponente';
 import { Button, Flex } from 'antd';
 import { Row, Col, Typography } from 'antd';
 const { Text, Link } = Typography;
@@ -14,7 +14,7 @@ const boxStyle = {
   alignItems: 'center',
 };
 
-export const SegundoComponente = ({ data }) => {
+export const Links = ({ data }) => {
   const rawLinksInteres = data.links_interest || "[]";
   let linksinteres = [];
 

@@ -7,7 +7,7 @@ const path = require('path');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const App = require('./src/App').default;
-const MosaicoPatrimonios = require('./src/MosaicoPatrimonios').MosaicoPatrimonios;
+const MosaicoPatrimonios = require('./src/components/herritage/mosaico').MosaicoPatrimonios;
 const cityData = require('./src/ocity.json');
 
 const outputDir = path.resolve(__dirname, 'Gandia');

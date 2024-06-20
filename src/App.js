@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css';
-import Header from './components/PrimerComponente';
-import { SegundoComponente } from './container/SegundoComponente';
-function App({data}) {
+import Header from './components/header';
+// import { SegundoComponente } from './components/links/SegundoComponente';
+// import {data } from './_ocity'
+import { MosaicoPatrimonios } from './components/herritage/mosaico';
+import DashboardRoutes from './router';
+import { BrowserRouter } from 'react-router-dom';  // Import BrowserRouter
+
+function App() {
   return (
     <div className="App">
-      <header className="border-solid border-2 border-indigo-600">
-      <Header data={data}/>
-      </header>
-      <div className='flex justify-center border-solid border-2 border-indigo-600'>
-      <SegundoComponente data={data}/>
-      </div>
-
+      <BrowserRouter>  
+        <DashboardRoutes />
+      </BrowserRouter>
     </div>
   );
 }
