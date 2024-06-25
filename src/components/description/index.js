@@ -3,7 +3,7 @@ import { Button, Typography, Row, Col, Image } from 'antd';
 
 const { Paragraph } = Typography;
 
-export const TercerComponente = ({ data }) => {
+export const Description = ({ data }) => {
     const [showLocalDescription, setShowLocalDescription] = useState(false);
     const [buttonText, setButtonText] = useState("Change to Local Language");
 
@@ -19,7 +19,7 @@ export const TercerComponente = ({ data }) => {
                     <div style={{ paddingLeft: '15px' }}> {/* Ajuste de espaciado */}
                         <Button type="primary" onClick={toggleDescription}>{buttonText}</Button>
                         <Paragraph>
-                            {showLocalDescription ? data.manifestation_description_local : data.manifestation_description}
+                            {showLocalDescription ? data.extended_local_heritage_description : data.extended_heritage_description}
                         </Paragraph>
                     </div>
                 </Col>
@@ -30,6 +30,7 @@ export const TercerComponente = ({ data }) => {
                             alt='imagen'
                             width='100%'
                         />
+                        
                     </div>
                 </Col>
             </Row>
@@ -37,4 +38,4 @@ export const TercerComponente = ({ data }) => {
     );
 };
 
-export default TercerComponente;
+export default Description;
