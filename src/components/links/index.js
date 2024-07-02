@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Description } from '../description';
-import { Button, Row, Col, Typography } from 'antd';
+import { Button, Row, Col, Typography, Layout } from 'antd';
 import { Flex } from 'antd';
 import axios from 'axios';
+import logo from '../../images/O-CITY_Logo.png';  // Ajusta la ruta a tu imagen de logo
 
 const { Text, Link } = Typography;
+const { Footer } = Layout;
 
 const boxStyle = {
   width: '100%',
@@ -16,9 +18,22 @@ const boxStyle = {
   alignItems: 'center',
 };
 
+const footerStyle = {
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '20px',
+  backgroundColor: '#f0f2f5',
+};
+
+const logoStyle = {
+  width: 150,
+  height: 'auto',
+};
+
 const Links = ({ data }) => {
   const navigate = useNavigate();
-  const { idCountry } = useParams();
   const [stateName, setStateName] = useState('');
   const idestado = data.city.state_id;
 
@@ -84,7 +99,7 @@ const Links = ({ data }) => {
   };
 
   return (
-    <div className='container max-width'>
+    <div>
       <Flex gap="middle" align="start" vertical>
         <Flex style={boxStyle}>
           <Button type="text" onClick={handleClick}>Countries</Button>
@@ -94,27 +109,38 @@ const Links = ({ data }) => {
         </Flex>
       </Flex>
       <Description data={data} />
-      <div className='mt-4'>
-        <Text strong>Links of interest:</Text>
-        {linksInteres.length > 0 ? (
-          linksInteres.map((link, index) => (
-            <Row key={index} gutter={[16, 16]} className='mb-2'>
+      <Footer style={footerStyle}>
+        <div>
+          <Text strong>Links of interest:</Text>
+          {linksInteres.length > 0 ? (
+            linksInteres.map((link, index) => (
+              link.name && link.url ? (
+                <Row key={index} gutter={[16, 16]} className='mb-2'>
+                  <Col span={24}>
+                    <Text strong>Description:</Text> {link.name}
+                  </Col>
+                  <Col span={24}>
+                    <Text strong>URL:</Text> <Link href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</Link>
+                  </Col>
+                </Row>
+              ) : null
+            ))
+          ) : (
+            <Row>
               <Col span={24}>
-                <Text strong>Description:</Text> {link.name}
-              </Col>
-              <Col span={24}>
-                <Text strong>URL:</Text> <Link href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</Link>
+                <Text>No links available</Text>
               </Col>
             </Row>
-          ))
-        ) : (
-          <Row>
-            <Col span={24}>
-              <Text>No links available</Text>
-            </Col>
-          </Row>
-        )}
-      </div>
+          )}
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <img src={logo} alt="Logo" style={logoStyle} />
+          <Text>hello@o-city.org</Text>
+        </div>
+        <div>
+          <Text strong>{data.heritageField ? data.heritageField.name : 'No heritage field name'}</Text>
+        </div>
+      </Footer>
     </div>
   );
 };

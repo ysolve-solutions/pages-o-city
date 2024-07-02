@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Typography, Row, Col, Image } from 'antd';
 
-const { Paragraph } = Typography;
+const { Paragraph, Title } = Typography;
 
 export const Description = ({ data }) => {
     const [showLocalDescription, setShowLocalDescription] = useState(false);
@@ -17,7 +17,10 @@ export const Description = ({ data }) => {
             <Row gutter={[16, 16]} className='mb-2'>
                 <Col xs={24} md={12} order={2}> {/* Orden 2 para cambiar posición con la imagen */}
                     <div style={{ paddingLeft: '15px' }}> {/* Ajuste de espaciado */}
-                        <Button type="primary" onClick={toggleDescription}>{buttonText}</Button>
+                        <Button type="text" onClick={toggleDescription}>{buttonText}</Button>
+                        <Title level={1} style={{ fontSize: '1.5em', marginTop: '20px' }}>
+                            Description
+                        </Title>
                         <Paragraph>
                             {showLocalDescription ? data.extended_local_heritage_description : data.extended_heritage_description}
                         </Paragraph>
@@ -30,7 +33,6 @@ export const Description = ({ data }) => {
                             alt='imagen'
                             width='100%'
                         />
-                        
                     </div>
                 </Col>
             </Row>

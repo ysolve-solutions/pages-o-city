@@ -29,7 +29,7 @@ export const MosaicoHeritage = () => {
 
   return (
     <Layout>
-      <Header style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#001529' }}>
+      <Header style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#263238', height:'10rem'}}>
         <Title level={1} style={{ color: 'white', margin: 0 }}>{cityName} Heritages</Title>
       </Header>
       <Content style={{ padding: '20px' }}>

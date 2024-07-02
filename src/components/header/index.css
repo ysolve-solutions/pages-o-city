@@ -1,13 +1,24 @@
 .header-container {
-    background-color: #f0f0f0; /* Color de fondo gris */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*height: 100vh;*/
-  }
-  
-  .title-large {
-    font-size: 2.5em; /* Tamaño grande para los títulos */
-    text-align: center;
-  }
-  
+  background-color: #263238; /* Color de fondo gris */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+}
+
+.title-large {
+  font-size: 2.5em; 
+  text-align: center;
+}
+
+.social-icon {
+  margin-right: 10px;
+}
+
+.social-icon:hover .anticon {
+  transform: scale(1.30) ;
+}
+
+.social-icon:last-child {
+  margin-right: 0;
+}
