@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Row, Col, Layout, Typography } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import imagen from '../../../images/mapaMundi.jpeg';  // Ajusta la ruta a tu imagen de logo
 
 const { Meta } = Card;
 const { Header, Content } = Layout;
@@ -18,6 +19,20 @@ export const MosaicoCountries = () => {
 
   const handleErrorImage = (event) => {
     event.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable'; // Ruta a la imagen de respaldo
+  };
+
+  const getRandomStyle = () => {
+    const styles = ['brightness',
+  'contrast',
+  'grayscale',
+  'hue-rotate',
+  'invert',
+  'opacity',
+  'saturate',
+  'sepia',
+  'drop-shadow',];
+    const randomIndex = Math.floor(Math.random() * styles.length);
+    return styles[randomIndex];
   };
 
   const handleCardClick = (id, name) => {
@@ -37,7 +52,11 @@ export const MosaicoCountries = () => {
                 <Card
                   hoverable
                   onClick={() => handleCardClick(item.id, item.name)}
-                  cover={<div className='image-container'><img onError={handleErrorImage} alt={item.name} src={`https://o-city.org/manifestations_media/${item.image}`} className='city-image' /></div>}
+                  cover={
+                    <div className={`image-container ${getRandomStyle()}`}>
+                      <img onError={handleErrorImage} alt={item.name} src={imagen} className='city-image' />
+                    </div>
+                  }
                 >
                   <Meta title={item.name} className='meta-title' />
                 </Card>
@@ -49,3 +68,5 @@ export const MosaicoCountries = () => {
     </Layout>
   );
 };
+
+export default MosaicoCountries;

@@ -4,7 +4,7 @@ import { Description } from '../description';
 import { Button, Row, Col, Typography, Layout } from 'antd';
 import { Flex } from 'antd';
 import axios from 'axios';
-import logo from '../../images/O-CITY_Logo.png';  // Ajusta la ruta a tu imagen de logo
+import logo from '../../images/O-CITY_Logo.jpeg';  // Ajusta la ruta a tu imagen de logo
 
 const { Text, Link } = Typography;
 const { Footer } = Layout;
@@ -80,7 +80,8 @@ const Links = ({ data }) => {
 
   const handleStateClick = () => {
     if (countryId && stateId) {
-      navigate(`/country/${countryId}/state/${stateId}`, { state: { stateName } });
+      navigate(`/country/${countryId}/state/${stateId}`, { state: { stateName, countryName
+       } });
     } else {
       console.log('One of the IDs is missing:', { countryId, stateId });
     }

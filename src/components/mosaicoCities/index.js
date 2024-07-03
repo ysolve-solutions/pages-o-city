@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Row, Col, Layout, Typography } from 'antd';
+import { Card, Row, Col, Layout, Typography, Button } from 'antd';
 import axios from 'axios';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import '../mosaicos.css'; // Importar el archivo CSS para estilos personalizados
@@ -13,21 +13,21 @@ export const MosaicoCities = () => {
   const { idState } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { stateName } = location.state || {};
+  const { stateName, countryName } = location.state || {};
+  const boxStyle = {
+    width: '100%',
+    height: 90,
+    borderRadius: 6,
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  };
 
   useEffect(() => {
     axios.get(`https://api.test-ocity.icu/api/city_ocity`)
       .then((response) => {
-        console.log('Cities data:', response.data);  // Verificar la estructura de response.data
-
-        // Eliminar duplicados basados en id
-        const uniqueCities = Array.from(new Set(response.data.map(city => city.id)))
-          .map(id => response.data.find(city => city.id === id));
-
-        // Filtrar por state_id
-        const filteredCities = uniqueCities.filter(city => city.state_id === parseInt(idState));
-
-        console.log('Filtered Cities:', filteredCities);
+        // Filtrar ciudades por state_id
+        const filteredCities = response.data.filter(city => city.state_id === parseInt(idState));
         setCities(filteredCities);
       })
       .catch((error) => console.error('Error fetching cities:', error));
@@ -37,15 +37,36 @@ export const MosaicoCities = () => {
     event.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable'; // Ruta de la imagen de respaldo
   };
 
-  const handleCardClick = (id, name) => {
-    navigate(`/country/:idCountry/state/${idState}/city/${id}`, { state: { stateName, cityName: name } });
+  const handleCardClick = (id, name, description, description_local, image) => {
+    navigate(`/country/:idCountry/state/${idState}/city/${id}`, {
+      state: { stateName, cityName: name, description, description_local, image }
+    });
+  };
+
+  const handleClick = () => {
+    navigate(`/`);
+  };
+
+  const handleCountryClick = () => {
+    // Verificar si hay al menos una ciudad en la lista
+    if (cities.length > 0) {
+      const countryId = cities[0].country.id; // Obtener el country.id de la primera ciudad en la lista
+      navigate(`/country/${countryId}`, { state: { countryName } });
+    } else {
+      console.log('No cities available to determine country ID');
+    }
   };
 
   return (
     <Layout>
-      <Header style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#263238', height:'10rem' }}>
+      <Header style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#263238', height: '10rem' }}>
         <Title level={1} style={{ color: 'white', margin: 0 }}>{stateName} Cities</Title>
       </Header>
+      <div style={boxStyle}>
+        <Button type="text" onClick={handleClick}>Countries</Button>
+        <Button type="text" onClick={handleCountryClick}>{countryName}</Button>
+        <Button type="text">{stateName}</Button>
+      </div>
       <Content style={{ padding: '20px' }}>
         <div className="container">
           <Row gutter={[16, 16]}>
@@ -58,7 +79,7 @@ export const MosaicoCities = () => {
                 <Col xs={24} sm={12} md={8} lg={8} key={item.id}>
                   <Card
                     hoverable
-                    onClick={() => handleCardClick(item.city_id, item.city.name)}
+                    onClick={() => handleCardClick(item.city_id, item.city.name, item.description, item.description_local, item.image)}
                     cover={
                       <div className="image-container">
                         <img
