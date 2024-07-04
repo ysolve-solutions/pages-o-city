@@ -1,6 +1,8 @@
-import React from 'react';
-import { Typography, Row, Col } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Typography, Row, Col, Button } from 'antd';
 import { TwitterOutlined, FacebookOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import './index.css';
 
 const { Title, Link } = Typography;
@@ -11,14 +13,72 @@ const transformName = (name) => {
 };
 
 export const Header = ({ data }) => {
-  console.log("Header data:", data);  // Verificar los datos en la consola
+  const navigate = useNavigate();
+  const [stateName, setStateName] = useState('');
+  const idestado = data.city.state_id;
 
-  // Ajustar según la estructura real de `data`
+  useEffect(() => {
+    axios.get(`https://api.test-ocity.icu/api/State/${idestado}`)
+      .then((response) => {
+        if (response.data) {
+          setStateName(response.data.name);
+        } else {
+          console.error("State data not found:", response.data);
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching state:", error);
+      });
+  }, [idestado]);
+
   const cityName = data?.city?.name || "City not available";
+  const countryName = data.country ? data.country.name : '';
+
+  const cityId = data.city ? data.city.id : null;
+  const countryId = data.country ? data.country.id : null;
+  const stateId = data.city ? data.city.state_id : null;
+
+  const handleCityClick = () => {
+    if (countryId && stateId && cityId) {
+      navigate(`/country/${countryId}/state/${stateId}/city/${cityId}`, { state: { cityName } });
+    } else {
+      console.log('One of the IDs is missing:', { countryId, stateId, cityId });
+    }
+  };
+
+  const handleStateClick = () => {
+    if (countryId && stateId) {
+      navigate(`/country/${countryId}/state/${stateId}`, { state: { stateName, countryName } });
+    } else {
+      console.log('One of the IDs is missing:', { countryId, stateId });
+    }
+  };
+
+  const handleCountryClick = () => {
+    if (countryId) {
+      navigate(`/country/${countryId}`, { state: { countryName } });
+    } else {
+      console.log('Country ID is missing:', { countryId });
+    }
+  };
+
+  const handleClick = () => {
+    navigate('/');
+  };
+
   const transformedName = transformName(data.name);
 
   return (
     <div className="header-container">
+      <div style={{ color: 'white' }}>
+              <Button type="text" onClick={handleClick} style={{ color: 'white', padding: 0 }}>Countries</Button>
+              <span>&nbsp;&lt;&nbsp;</span>
+              <Button type="text" onClick={handleCountryClick} style={{ color: 'white', padding: 0 }}>{countryName}</Button>
+              <span>&nbsp;&lt;&nbsp;</span>
+              <Button type="text" onClick={handleStateClick} style={{ color: 'white', padding: 0 }}>{stateName}</Button>
+              <span>&nbsp;&lt;&nbsp;</span>
+              <Button type="text" onClick={handleCityClick} style={{ color: 'white', padding: 0 }}>{cityName}</Button>
+            </div>
       <Row justify="center" align="middle" style={{ width: '100%' }}>
         <Col>
           <div className='mt-4' style={{ marginBottom: '20px' }}>
@@ -38,6 +98,7 @@ export const Header = ({ data }) => {
                 <FacebookOutlined style={{ fontSize: '40px', color: '#4267B2' }} />
               </Link>
             </div>
+            
           </div>
         </Col>
       </Row>

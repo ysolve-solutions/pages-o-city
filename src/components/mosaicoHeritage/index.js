@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Row, Col, Layout, Typography, Button, Badge, Flex } from 'antd';
+import { Card, Row, Col, Layout, Typography, Button, Badge } from 'antd';
 import axios from 'axios';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import '../mosaicos.css';
@@ -18,14 +18,6 @@ export const MosaicoHeritage = () => {
   const navigate = useNavigate();
 
   const { cityName, description, description_local, image, stateName } = location.state || {};
-  const boxStyle = {
-    width: '100%',
-    height: 90,
-    borderRadius: 6,
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  };
 
   useEffect(() => {
     axios.get(`https://api.test-ocity.icu/api/heritage/lists`)
@@ -87,10 +79,21 @@ export const MosaicoHeritage = () => {
   return (
     <Layout>
       <Header style={{ backgroundColor: '#263238', height: 'auto', padding: '20px' }}>
-        <Row align="middle">
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', color:'white' }}>
+          <Button type="link" onClick={handleClick} style={{ color: 'white', padding: 0 }}>Countries</Button>
+          <span>&nbsp;&lt;&nbsp;</span>
+          <Button type="link" onClick={handleCountryClick} style={{ color: 'white', padding: 0 }}>{country.name}</Button>
+          <span>&nbsp;&lt;&nbsp;</span>
+          <Button type="link" onClick={handleStateClick} style={{ color: 'white', padding: 0}}>{state.name}</Button>
+          <span>&nbsp;&lt;&nbsp;</span>
+          <Button type="link" style={{ color: 'white', padding: 0}}>{cityName}</Button>
+        </div>
+        <div >
+          <Title level={1} style={{ color: 'white', margin: 0 }}>{cityName} Heritages</Title>
+        </div>
+        <Row>
           <Col flex="auto">
-            <Title level={1} style={{ color: 'white', margin: 0 }}>{cityName} Heritages</Title>
-            <Button type="link" onClick={toggleDescription}>
+            <Button type="link" onClick={toggleDescription} style={{ color: '#fc4b08' }}>
               Change to {useLocalDescription ? 'Description' : 'Local Language'}
             </Button>
             <Paragraph style={{ color: 'white' }}>
@@ -103,19 +106,11 @@ export const MosaicoHeritage = () => {
               alt={cityName}
               src={`https://o-city.org/manifestations_media/picture_city/${image}`}
               className="city-image"
-              style={{ width: '25rem'}}
+              style={{ width: '25rem' }}
             />
           </Col>
         </Row>
       </Header>
-      <Flex gap="middle" align="start" vertical>
-        <Flex style={boxStyle}>
-          <Button type="text" onClick={handleClick}>Countries</Button>
-          <Button type="text" onClick={handleCountryClick}>{country.name}</Button>
-          <Button type="text" onClick={handleStateClick}>{state.name}</Button>
-          <Button type="text">{cityName}</Button>
-        </Flex>
-      </Flex>
       <Content style={{ padding: '20px' }}>
         <div className="container">
           <Row gutter={16}>
@@ -145,7 +140,6 @@ export const MosaicoHeritage = () => {
                         {item.name}
                       </span>
                     }
-                    
                     className='meta-title'
                   />
                 </Card>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Row, Col, Layout, Typography, Flex, Button } from 'antd';
+import { Card, Row, Col, Layout, Typography, Button } from 'antd';
 import axios from 'axios';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import '../mosaicos.css';
-import imagen from '../../images/region2.jpeg'
+import imagen from '../../images/region2.jpeg';
 
 const { Meta } = Card;
 const { Header, Content } = Layout;
@@ -15,14 +15,6 @@ export const MosaicoStates = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { countryName } = location.state || {};
-  const boxStyle = {
-    width: '100%',
-    height: 90,
-    borderRadius: 6,
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  };
 
   useEffect(() => {
     axios.get(`https://api.test-ocity.icu/api/State`)
@@ -57,21 +49,21 @@ export const MosaicoStates = () => {
     const randomStyle = getRandomStyle();
     navigate(`/country/${idCountry}/state/${id}`, { state: { countryName, stateName: name, randomStyle } });
   };
+
   const handleClick = () => {
     navigate(`/`);
   };
 
   return (
     <Layout>
-      <Header style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#263238', height:'10rem' }}>
-        <Title level={1} style={{ color: 'white', margin: 0 }}>{countryName} States</Title>
+      <Header style={{  backgroundColor: '#263238', height: '10rem', padding: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', color:'white' }}>
+          <Button type="link" onClick={handleClick} style={{ color: 'white', padding: 0}}>Countries</Button>
+          <span>&nbsp;&lt;&nbsp;</span>
+          <Button type="link" style={{ color: 'white', padding: 0 }}>{countryName}</Button>
+        </div>
+        <Title level={1} style={{ color: 'white', margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>{countryName} States</Title>
       </Header>
-      <Flex gap="middle" align="start" vertical>
-        <Flex style={boxStyle}>
-          <Button type="text" onClick={handleClick}>Countries</Button>
-          <Button type="text">{countryName}</Button>
-        </Flex>
-      </Flex>
       <Content style={{ padding: '20px' }}>
         <div className="container">
           <Row gutter={16}>

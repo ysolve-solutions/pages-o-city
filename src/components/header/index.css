@@ -1,9 +1,5 @@
 .header-container {
   background-color: #263238; /* Color de fondo gris */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 15rem;
 }
 
 .title-large {

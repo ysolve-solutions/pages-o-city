@@ -14,14 +14,7 @@ export const MosaicoCities = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { stateName, countryName } = location.state || {};
-  const boxStyle = {
-    width: '100%',
-    height: 90,
-    borderRadius: 6,
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  };
+  
 
   useEffect(() => {
     axios.get(`https://api.test-ocity.icu/api/city_ocity`)
@@ -59,14 +52,16 @@ export const MosaicoCities = () => {
 
   return (
     <Layout>
-      <Header style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#263238', height: '10rem' }}>
-        <Title level={1} style={{ color: 'white', margin: 0 }}>{stateName} Cities</Title>
+      <Header style={{ backgroundColor: '#263238', height: '10rem', padding: '20px', position: 'relative' }}>
+        <div style={{ display: 'flex', alignItems: 'center', position: 'absolute', top: '20px', left: '20px', color:'white' }}>
+          <Button type="link" onClick={handleClick} style={{ color: 'white', padding: 0 }}>Countries</Button>
+          <span>&nbsp;&lt;&nbsp;</span>
+          <Button type="link" style={{ color: 'white', padding: 0, }} onClick={handleCountryClick}>{countryName}</Button>
+          <span>&nbsp;&lt;&nbsp;</span>
+          <Button type="link" style={{ color: 'white', padding: 0, }}>{stateName}</Button>
+        </div>
+        <Title level={1} style={{ color: 'white', margin: 0, textAlign: 'center', lineHeight: '10rem' }}>{stateName} Cities</Title>
       </Header>
-      <div style={boxStyle}>
-        <Button type="text" onClick={handleClick}>Countries</Button>
-        <Button type="text" onClick={handleCountryClick}>{countryName}</Button>
-        <Button type="text">{stateName}</Button>
-      </div>
       <Content style={{ padding: '20px' }}>
         <div className="container">
           <Row gutter={[16, 16]}>
