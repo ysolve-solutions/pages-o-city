@@ -78,38 +78,33 @@ export const MosaicoHeritage = () => {
 
   return (
     <Layout>
-      <Header style={{ backgroundColor: '#263238', height: 'auto', padding: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', color:'white' }}>
-          <Button type="link" onClick={handleClick} style={{ color: 'white', padding: 0 }}>Countries</Button>
-          <span>&nbsp;&lt;&nbsp;</span>
-          <Button type="link" onClick={handleCountryClick} style={{ color: 'white', padding: 0 }}>{country.name}</Button>
-          <span>&nbsp;&lt;&nbsp;</span>
-          <Button type="link" onClick={handleStateClick} style={{ color: 'white', padding: 0}}>{state.name}</Button>
-          <span>&nbsp;&lt;&nbsp;</span>
-          <Button type="link" style={{ color: 'white', padding: 0}}>{cityName}</Button>
-        </div>
-        <div >
-          <Title level={1} style={{ color: 'white', margin: 0 }}>{cityName} Heritages</Title>
-        </div>
-        <Row>
-          <Col flex="auto">
+      <Header style={{ backgroundColor: '#263238', height: 'auto', padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ color: 'white'}}>
+          <div style={{ marginBottom: '60px', maxWidth: '50%' }}>
+            <Button type="link" onClick={handleClick} style={{ color: 'white', padding: 0 }}>Countries</Button>
+            <span>&nbsp;&lt;&nbsp;</span>
+            <Button type="link" onClick={handleCountryClick} style={{ color: 'white', padding: 0 }}>{country.name}</Button>
+            <span>&nbsp;&lt;&nbsp;</span>
+            <Button type="link" onClick={handleStateClick} style={{ color: 'white', padding: 0 }}>{state.name}</Button>
+            <span>&nbsp;&lt;&nbsp;</span>
+            <Button type="link" style={{ color: 'white', padding: 0 }}>{cityName}</Button>
+          </div>
+          <div style={{  marginLeft: '10px' }}>
+            <Title level={1} style={{ color: 'white', margin: 0 }}>{cityName} Heritages</Title>
             <Button type="link" onClick={toggleDescription} style={{ color: '#fc4b08' }}>
               Change to {useLocalDescription ? 'Description' : 'Local Language'}
             </Button>
             <Paragraph style={{ color: 'white' }}>
               {useLocalDescription ? description_local : description}
             </Paragraph>
-          </Col>
-          <Col flex="550px">
-            <img
-              onError={handleErrorImage}
-              alt={cityName}
-              src={`https://o-city.org/manifestations_media/picture_city/${image}`}
-              className="city-image"
-              style={{ width: '25rem' }}
-            />
-          </Col>
-        </Row>
+          </div>
+        </div>
+        <img
+          onError={handleErrorImage}
+          alt={cityName}
+          src={`https://o-city.org/manifestations_media/picture_city/${image}`}
+          className="city-image"
+          style={{ width: '25rem' }} />
       </Header>
       <Content style={{ padding: '20px' }}>
         <div className="container">
@@ -119,29 +114,22 @@ export const MosaicoHeritage = () => {
                 <Card
                   hoverable
                   onClick={() => handleCardClick(item.extended_heritage_description, item.extended_local_heritage_description, item.image, item.id)}
-                  cover={
-                    <div className='image-container'>
-                      <img
-                        onError={handleErrorImage}
-                        alt={item.name}
-                        src={`https://o-city.org/manifestations_media/${item.image}`}
-                        className='city-image'
-                      />
-                    </div>
-                  }
+                  cover={<div className='image-container'>
+                    <img
+                      onError={handleErrorImage}
+                      alt={item.name}
+                      src={`https://o-city.org/manifestations_media/${item.image}`}
+                      className='city-image' />
+                  </div>}
                 >
                   <Meta
-                    title={
-                      <span>
-                        <Badge
-                          count={index + 1}
-                          style={{ backgroundColor: '#fc4b08', color: 'white', boxShadow: '0 0 0 1px #d9d9d9 inset', marginRight: '8px' }}
-                        />
-                        {item.name}
-                      </span>
-                    }
-                    className='meta-title'
-                  />
+                    title={<span>
+                      <Badge
+                        count={index + 1}
+                        style={{ backgroundColor: '#fc4b08', color: 'white', boxShadow: '0 0 0 1px #d9d9d9 inset', marginRight: '8px' }} />
+                      {item.name}
+                    </span>}
+                    className='meta-title' />
                 </Card>
               </Col>
             ))}
