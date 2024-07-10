@@ -14,14 +14,21 @@ export const MosaicoCities = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { stateName, countryName } = location.state || {};
-  
 
   useEffect(() => {
-    axios.get(`https://api.test-ocity.icu/api/city_ocity`)
+    axios.get(`https://api.test-ocity.icu/api/city_ocity?limit=0&offset=0`)
       .then((response) => {
-        // Filtrar ciudades por state_id
-        const filteredCities = response.data.filter(city => city.state_id === parseInt(idState));
-        setCities(filteredCities);
+        // Verificar la estructura de response.data
+        console.log('Response data:', response.data);
+
+        // Asegurarse de que response.data.result es un array antes de filtrarlo
+        if (Array.isArray(response.data.result)) {
+          const filteredCities = response.data.result.filter(city => city.state_id === parseInt(idState));
+          setCities(filteredCities);
+          console.log(filteredCities);
+        } else {
+          console.error('Expected response data result to be an array');
+        }
       })
       .catch((error) => console.error('Error fetching cities:', error));
   }, [idState]);
@@ -74,7 +81,7 @@ export const MosaicoCities = () => {
                 <Col xs={24} sm={12} md={8} lg={8} key={item.id}>
                   <Card
                     hoverable
-                    onClick={() => handleCardClick(item.city_id, item.city.name, item.description, item.description_local, item.image)}
+                    onClick={() => handleCardClick(item.city.id, item.city.name, item.description, item.description_local, item.image)}
                     cover={
                       <div className="image-container">
                         <img

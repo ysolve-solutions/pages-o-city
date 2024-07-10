@@ -20,7 +20,7 @@ export const MosaicoHeritage = () => {
   const { cityName, description, description_local, image, stateName } = location.state || {};
 
   useEffect(() => {
-    axios.get(`https://api.test-ocity.icu/api/heritage/lists`)
+    axios.get(`https://api.test-ocity.icu/api/heritage/lists/byCityId/${idCity}`)
       .then((response) => {
         const filteredHeritages = response.data.filter(heritage => heritage.city_id === parseInt(idCity));
         if (filteredHeritages.length > 0) {
