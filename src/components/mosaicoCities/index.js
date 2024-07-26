@@ -16,7 +16,7 @@ export const MosaicoCities = () => {
   const { stateName, countryName } = location.state || {};
 
   useEffect(() => {
-    axios.get(`https://api.test-ocity.icu/api/city_ocity?limit=0&offset=0`)
+    axios.post(`https://api.test-ocity.icu/api/city_ocity?limit=0&offset=0`)
       .then((response) => {
         // Verificar la estructura de response.data
         console.log('Response data:', response.data);

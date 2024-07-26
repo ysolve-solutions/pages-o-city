@@ -7,7 +7,8 @@ import imagen from '../../../images/mapaMundi.jpeg';  // Ajusta la ruta a tu ima
 const { Meta } = Card;
 const { Header, Content } = Layout;
 const { Title } = Typography;
-
+//TODO: Esto es mas una sugerencia se me ocurrio cuando ya entregué el proyecto pero poner un buscador para encontrar los paises mas rapido
+//sería muchísimo mejor.
 export const MosaicoCountries = () => {
   const [countries, setCountries] = useState([]);
   const navigate = useNavigate();

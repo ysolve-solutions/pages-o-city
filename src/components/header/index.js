@@ -6,7 +6,9 @@ import axios from 'axios';
 import './index.css';
 
 const { Title, Link } = Typography;
-
+//TODO: Cuando se selecciona en las migas de pan la ciudad para volver al mosaico de los patrimonios, no he conseguido que se mantenga la informacion 
+//de la imagen la descripcion y lo de lheader ya que cuando se lee la api esos datos no estan.
+//TODO: Al modificar las migas de pan tuve que cambiar la estructura y no tuve en cuenta el responsive, creo que no funciona correctamente e esta pagina
 const transformName = (name) => {
   // Convierte el nombre a minúsculas y reemplaza los espacios por guiones
   return name.toLowerCase().replace(/ /g, '-');
