@@ -82,7 +82,7 @@ export const MosaicoHeritage = () => {
     <Layout>
       <Header style={{ backgroundColor: '#263238', height: 'auto', padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ color: 'white'}}>
-          <div style={{ marginBottom: '60px', maxWidth: '50%' }}>
+          <div style={{ marginBottom: '60px', maxWidth: '100%' }}>
             <Button type="link" onClick={handleClick} style={{ color: 'white', padding: 0 }}>Countries</Button>
             <span>&nbsp;&lt;&nbsp;</span>
             <Button type="link" onClick={handleCountryClick} style={{ color: 'white', padding: 0 }}>{country.name}</Button>
