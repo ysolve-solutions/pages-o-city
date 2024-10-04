@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Row, Col, Layout, Typography, Button, Badge } from 'antd';
 import axios from 'axios';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import '../mosaicos.css';
+import '../../styles/mosaicos.css';
 
 const { Meta } = Card;
 const { Header, Content } = Layout;
@@ -20,8 +20,10 @@ export const MosaicoHeritage = () => {
   const { cityName, description, description_local, image, stateName } = location.state || {};
 
   useEffect(() => {
+    console.log("ESTTOY AQUI")
     axios.get(`https://api.test-ocity.icu/api/heritage/lists/byCityId/${idCity}`)
       .then((response) => {
+        console.log("CCITIE", response)
         const filteredHeritages = response.data.filter(heritage => heritage.city_id === parseInt(idCity));
         if (filteredHeritages.length > 0) {
           const { country, city } = filteredHeritages[0];

@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Row, Col, Layout, Typography, Button } from 'antd';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Card, Row, Col, Layout, Typography, Button, Input } from 'antd';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import '../mosaicos.css';
 import imagen from '../../images/region2.jpeg';
+import '../../styles/mosaicos.css';
 
 const { Meta } = Card;
 const { Header, Content } = Layout;
 const { Title } = Typography;
+const { Search } = Input;
 
 export const MosaicoStates = () => {
   const [states, setStates] = useState([]);
+  const [searchText, setSearchText] = useState('');
   const { idCountry } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const { countryName } = location.state || {};
 
   useEffect(() => {
-    axios.get(`https://api.test-ocity.icu/api/State`)
-      .then((response) => {
-        const filteredStates = response.data.filter(state => state.country_id === parseInt(idCountry));
-        setStates(filteredStates);
-      });
+    axios.get(`https://api.test-ocity.icu/api/state/country/${idCountry}`)
+      .then((response) => setStates(response.data));
   }, [idCountry]);
 
   const styles = [
@@ -50,24 +49,37 @@ export const MosaicoStates = () => {
     navigate(`/country/${idCountry}/state/${id}`, { state: { countryName, stateName: name, randomStyle } });
   };
 
-  const handleClick = () => {
+  const handleNavigationToHome = () => {
     navigate(`/`);
   };
 
+  const filteredStates = states.filter((state) =>
+    state.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <Layout>
-      <Header style={{  backgroundColor: '#263238', height: '10rem', padding: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', color:'white' }}>
-          <Button type="link" onClick={handleClick} style={{ color: 'white', padding: 0}}>Countries</Button>
+      <Header style={{ backgroundColor: '#263238', height: '10rem', padding: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', color: 'white' }}>
+          <Button type="link" onClick={handleNavigationToHome} style={{ color: 'white', padding: 0 }}>Countries</Button>
           <span>&nbsp;&lt;&nbsp;</span>
           <Button type="link" style={{ color: 'white', padding: 0 }}>{countryName}</Button>
         </div>
-        <Title level={1} style={{ color: 'white', margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>{countryName} States</Title>
+        <Title level={1} style={{ color: 'white', margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>{countryName} States</Title>
       </Header>
       <Content style={{ padding: '20px' }}>
         <div className="container">
+          {/* Campo de búsqueda */}
+          <Search
+            placeholder="Search states"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onChange={(e) => setSearchText(e.target.value)}
+            style={{ marginBottom: '20px' }}
+          />
           <Row gutter={16}>
-            {states.map((item) => (
+            {filteredStates.map((item) => (
               <Col span={8} key={item.id}>
                 <Card
                   hoverable
@@ -84,3 +96,5 @@ export const MosaicoStates = () => {
     </Layout>
   );
 };
+
+export default MosaicoStates;
