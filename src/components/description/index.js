@@ -15,8 +15,8 @@ export const Description = ({ data }) => {
     return (
         <div className='container max-width'>
             <Row gutter={[16, 16]} className='mb-2'>
-                <Col xs={24} md={12} order={2}> {/* Orden 2 para cambiar posición con la imagen */}
-                    <div style={{ paddingLeft: '15px' }}> {/* Ajuste de espaciado */}
+                <Col xs={24} md={12} order={2}>
+                    <div style={{ paddingLeft: '15px' }}>
                         <Button type="text" onClick={toggleDescription}>{buttonText}</Button>
                         <Title level={1} style={{ fontSize: '1.5em', marginTop: '20px' }}>
                             Description
