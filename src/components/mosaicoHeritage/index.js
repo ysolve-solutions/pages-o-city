@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Row, Col, Layout, Typography, Button, Badge } from 'antd';
+import { Card, Row, Col, Layout, Typography, Button, Badge, Input } from 'antd';
 import axios from 'axios';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import '../../styles/mosaicos.css';
@@ -16,6 +16,8 @@ export const MosaicoHeritage = () => {
   const { idCity } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const { Search } = Input;
+  const [searchText, setSearchText] = useState('');
 
   const { cityName, description, description_local, image, stateName } = location.state || {};
 
@@ -77,6 +79,9 @@ export const MosaicoHeritage = () => {
   const handleClick = () => {
     navigate(`/`);
   };
+  const filteredHeritages = heritages.filter((state) =>
+    state.name.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <Layout>
@@ -110,8 +115,17 @@ export const MosaicoHeritage = () => {
       </Header>
       <Content style={{ padding: '20px' }}>
         <div className="container">
+          {/* Campo de búsqueda */}
+          <Search
+            placeholder="Search states"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onChange={(e) => setSearchText(e.target.value)}
+            style={{ marginBottom: '20px' }}
+          />
           <Row gutter={16}>
-            {heritages.map((item, index) => (
+            {filteredHeritages.map((item, index) => (
               <Col span={8} key={item.id}>
                 <Card
                   hoverable
