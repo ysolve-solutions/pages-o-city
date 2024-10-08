@@ -19,3 +19,9 @@
   .meta-title {
     text-align: center;
   }
+
+  .imagenciudad {
+    width: 25rem;
+    
+    object-fit: cover;
+  }

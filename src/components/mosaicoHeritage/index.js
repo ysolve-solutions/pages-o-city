@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Row, Col, Layout, Typography, Button, Badge, Input } from 'antd';
 import axios from 'axios';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useCity } from '../../contexto/CityContext'; // Importar el contexto
 import '../../styles/mosaicos.css';
 
 const { Meta } = Card;
@@ -19,8 +20,9 @@ export const MosaicoHeritage = () => {
   const { Search } = Input;
   const [searchText, setSearchText] = useState('');
 
-  const { cityName, description, description_local, image, stateName } = location.state || {};
-
+  const { cityName, description, description_local, stateName } = location.state || {};
+  const { selectedCity } = useCity(); // Usar el contexto para obtener la ciudad seleccionada
+  
   useEffect(() => {
     console.log("ESTTOY AQUI")
     axios.get(`https://api.test-ocity.icu/api/heritage/lists/byCityId/${idCity}`)
@@ -107,11 +109,12 @@ export const MosaicoHeritage = () => {
           </div>
         </div>
         <img
-          onError={handleErrorImage}
-          alt={cityName}
-          src={`https://o-city.org/manifestations_media/picture_city/${image}`}
-          className="city-image"
-          style={{ width: '25rem' }} />
+          onError={(e) => e.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable'}
+          alt={selectedCity?.name || cityName}
+          src={`https://o-city.org/manifestations_media/picture_city/${selectedCity?.image}`}
+          className='imagenciudad'
+          style={{with:'25rem'}}
+        />
       </Header>
       <Content style={{ padding: '20px' }}>
         <div className="container">

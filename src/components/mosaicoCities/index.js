@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Row, Col, Layout, Typography, Button, Input } from 'antd';
 import axios from 'axios';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useCity } from '../../contexto/CityContext'; // Importar el contexto
 import '../../styles/mosaicos.css';
 
 const { Meta } = Card;
@@ -17,13 +18,15 @@ export const MosaicoCities = () => {
   const location = useLocation();
   const { stateName, countryName } = location.state || {};
 
+  // Obtener el contexto de la ciudad
+  const { setSelectedCity } = useCity();
+
   useEffect(() => {
     axios.post(`https://api.test-ocity.icu/api/city_ocity?limit=0&offset=0`)
       .then((response) => {
         if (Array.isArray(response.data.result)) {
           const filteredCities = response.data.result.filter(city => city.state_id === parseInt(idState));
           setCities(filteredCities);
-          console.log("filteredCities",filteredCities)
         } else {
           console.error('Expected response data result to be an array');
         }
@@ -31,13 +34,10 @@ export const MosaicoCities = () => {
       .catch((error) => console.error('Error fetching cities:', error));
   }, [idState]);
 
-  const handleErrorImage = (event) => {
-    event.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable';
-  };
-
-  const handleCardClick = ({ id, name, description, description_local },image ) => {
-    navigate(`city/${id}`, {
-      state: { stateName, cityName: name, description, description_local, image }
+  const handleCardClick = (cityData, image) => {
+    setSelectedCity({ ...cityData, image }); // Guardar el estado de la ciudad en el contexto
+    navigate(`city/${cityData.id}`, {
+      state: { stateName, cityName: cityData.name, image }
     });
   };
 
@@ -96,7 +96,7 @@ export const MosaicoCities = () => {
                     cover={
                       <div className="image-container">
                         <img
-                          onError={handleErrorImage}
+                         
                           alt={item.city ? item.city.name : 'CITY_NAME_NOT_AVAILABLE'}
                           src={`https://o-city.org/manifestations_media/picture_city/${item.image}`}
                           className="city-image"
