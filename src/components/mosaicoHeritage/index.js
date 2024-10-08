@@ -20,7 +20,7 @@ export const MosaicoHeritage = () => {
   const { Search } = Input;
   const [searchText, setSearchText] = useState('');
 
-  const { cityName, description, description_local, stateName } = location.state || {};
+  const { cityName } = location.state || {};
   const { selectedCity } = useCity(); // Usar el contexto para obtener la ciudad seleccionada
   
   useEffect(() => {
@@ -32,12 +32,12 @@ export const MosaicoHeritage = () => {
         if (filteredHeritages.length > 0) {
           const { country, city } = filteredHeritages[0];
           setCountry({ id: country.id, name: country.name });
-          setState({ id: city.state_id, name: stateName }); // Usar el stateName recibido en la navegación
+          setState({ id: city.state_id, name: selectedCity.stateName }); // Usar el stateName recibido en la navegación
         }
         setHeritages(filteredHeritages);
       })
       .catch((error) => console.error('Error fetching heritages:', error));
-  }, [idCity, stateName]);
+  }, [idCity, selectedCity.stateName]);
 
   const handleErrorImage = (event) => {
     event.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable';
@@ -94,7 +94,7 @@ export const MosaicoHeritage = () => {
             <span>&nbsp;&lt;&nbsp;</span>
             <Button type="link" onClick={handleCountryClick} style={{ color: 'white', padding: 0 }}>{country.name}</Button>
             <span>&nbsp;&lt;&nbsp;</span>
-            <Button type="link" onClick={handleStateClick} style={{ color: 'white', padding: 0 }}>{state.name}</Button>
+            <Button type="link" onClick={handleStateClick} style={{ color: 'white', padding: 0 }}>{selectedCity.stateName}</Button>
             <span>&nbsp;&lt;&nbsp;</span>
             <Button type="link" style={{ color: 'white', padding: 0 }}>{cityName}</Button>
           </div>
@@ -104,7 +104,7 @@ export const MosaicoHeritage = () => {
               Change to {useLocalDescription ? 'Description' : 'Local Language'}
             </Button>
             <Paragraph style={{ color: 'white' }}>
-              {useLocalDescription ? description_local : description}
+              {useLocalDescription ? selectedCity?.description_local : selectedCity?.description}
             </Paragraph>
           </div>
         </div>

@@ -34,8 +34,8 @@ export const MosaicoCities = () => {
       .catch((error) => console.error('Error fetching cities:', error));
   }, [idState]);
 
-  const handleCardClick = (cityData, image) => {
-    setSelectedCity({ ...cityData, image }); // Guardar el estado de la ciudad en el contexto
+  const handleCardClick = (cityData, image, description, description_local) => {
+    setSelectedCity({ ...cityData, image,description, description_local, stateName}); // Guardar el estado de la ciudad en el contexto
     navigate(`city/${cityData.id}`, {
       state: { stateName, cityName: cityData.name, image }
     });
@@ -92,7 +92,7 @@ export const MosaicoCities = () => {
                 <Col xs={24} sm={12} md={8} lg={8} key={item.id}>
                   <Card
                     hoverable
-                    onClick={() => handleCardClick(item.city, item.image)}
+                    onClick={() => handleCardClick(item.city, item.image, item.description, item.description_local)}
                     cover={
                       <div className="image-container">
                         <img

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Row, Col, Layout, Typography, Button, Input } from 'antd';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import imagen from '../../images/region2.jpeg';
+import { useCity } from '../../contexto/CityContext'; // Importar el contexto
 import '../../styles/mosaicos.css';
 
 const { Meta } = Card;
@@ -18,6 +19,8 @@ export const MosaicoStates = () => {
   const location = useLocation();
   const { countryName } = location.state || {};
 
+  // Obtener el contexto de la ciudad
+  const { setSelectedCity } = useCity();
   useEffect(() => {
     axios.get(`https://api.test-ocity.icu/api/state/country/${idCountry}`)
       .then((response) => setStates(response.data));
@@ -46,6 +49,11 @@ export const MosaicoStates = () => {
 
   const handleCardClick = (id, name) => {
     const randomStyle = getRandomStyle();
+    // Actualiza el contexto con el nombre del estado
+  setSelectedCity((prevCity) => ({
+    ...prevCity,
+    stateName: name,
+  }));
     navigate(`/country/${idCountry}/state/${id}`, { state: { countryName, stateName: name, randomStyle } });
   };
 

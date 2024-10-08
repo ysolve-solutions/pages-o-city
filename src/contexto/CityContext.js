@@ -8,7 +8,12 @@ export const useCity = () => useContext(CityContext);
 
 // Proveedor del contexto
 export const CityProvider = ({ children }) => {
-  const [selectedCity, setSelectedCity] = useState({});
+  const [selectedCity, setSelectedCity] = useState({
+    image: '',
+    description: '',
+    description_local: '',
+    stateName: '', // Agregar el campo stateName
+  });
 
   return (
     <CityContext.Provider value={{ selectedCity, setSelectedCity }}>
