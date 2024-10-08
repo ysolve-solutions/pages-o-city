@@ -19,3 +19,13 @@
   .meta-title {
     text-align: center;
   }
+
+  .cityImage {
+    width: 25rem;
+    
+    object-fit: cover;
+  }
+
+  body{
+    background-color: #f1f1f1;
+  }

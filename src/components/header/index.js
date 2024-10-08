@@ -35,13 +35,13 @@ export const Header = ({ data }) => {
 
   return (
     <div className="header-container">
-      <div style={{ color: 'white', display: 'flex', gap: '4px' }}>
+      <div style={{ color: 'white',  gap: '4px' }}>
         <Button type="text" onClick={() => navigate('/')} style={{ color: 'white', padding: 0 }}>Countries</Button>
-        <span>&gt;</span>
+        <span>&nbsp;&lt;&nbsp;</span>
         <Button type="text" onClick={() => handleNavigation(`/country/${countryId}`, { countryName })} style={{ color: 'white', padding: 0 }}>{countryName}</Button>
-        <span>&gt;</span>
+        <span>&nbsp;&lt;&nbsp;</span>
         <Button type="text" onClick={() => handleNavigation(`/country/${countryId}/state/${stateId}`, { stateName, countryName })} style={{ color: 'white', padding: 0 }}>{stateName}</Button>
-        <span>&gt;</span>
+        <span>&nbsp;&lt;&nbsp;</span>
         <Button type="text" onClick={() => handleNavigation(`/country/${countryId}/state/${stateId}/city/${cityId}`, { cityName })} style={{ color: 'white', padding: 0 }}>{cityName}</Button>
       </div>
 

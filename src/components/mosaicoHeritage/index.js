@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Row, Col, Layout, Typography, Button, Badge } from 'antd';
+import { Card, Row, Col, Layout, Typography, Button, Badge, Input } from 'antd';
 import axios from 'axios';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useCity } from '../../contexto/CityContext'; // Importar el contexto
 import '../../styles/mosaicos.css';
 
 const { Meta } = Card;
@@ -16,9 +17,12 @@ export const MosaicoHeritage = () => {
   const { idCity } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const { Search } = Input;
+  const [searchText, setSearchText] = useState('');
 
-  const { cityName, description, description_local, image, stateName } = location.state || {};
-
+  const { cityName } = location.state || {};
+  const { selectedCity } = useCity(); // Usar el contexto para obtener la ciudad seleccionada
+  
   useEffect(() => {
     console.log("ESTTOY AQUI")
     axios.get(`https://api.test-ocity.icu/api/heritage/lists/byCityId/${idCity}`)
@@ -28,12 +32,12 @@ export const MosaicoHeritage = () => {
         if (filteredHeritages.length > 0) {
           const { country, city } = filteredHeritages[0];
           setCountry({ id: country.id, name: country.name });
-          setState({ id: city.state_id, name: stateName }); // Usar el stateName recibido en la navegación
+          setState({ id: city.state_id, name: selectedCity.stateName }); // Usar el stateName recibido en la navegación
         }
         setHeritages(filteredHeritages);
       })
       .catch((error) => console.error('Error fetching heritages:', error));
-  }, [idCity, stateName]);
+  }, [idCity, selectedCity.stateName]);
 
   const handleErrorImage = (event) => {
     event.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable';
@@ -77,17 +81,20 @@ export const MosaicoHeritage = () => {
   const handleClick = () => {
     navigate(`/`);
   };
+  const filteredHeritages = heritages.filter((state) =>
+    state.name.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <Layout>
       <Header style={{ backgroundColor: '#263238', height: 'auto', padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ color: 'white'}}>
-          <div style={{ marginBottom: '60px', maxWidth: '50%' }}>
+          <div style={{ marginBottom: '60px', maxWidth: '100%' }}>
             <Button type="link" onClick={handleClick} style={{ color: 'white', padding: 0 }}>Countries</Button>
             <span>&nbsp;&lt;&nbsp;</span>
             <Button type="link" onClick={handleCountryClick} style={{ color: 'white', padding: 0 }}>{country.name}</Button>
             <span>&nbsp;&lt;&nbsp;</span>
-            <Button type="link" onClick={handleStateClick} style={{ color: 'white', padding: 0 }}>{state.name}</Button>
+            <Button type="link" onClick={handleStateClick} style={{ color: 'white', padding: 0 }}>{selectedCity.stateName}</Button>
             <span>&nbsp;&lt;&nbsp;</span>
             <Button type="link" style={{ color: 'white', padding: 0 }}>{cityName}</Button>
           </div>
@@ -97,21 +104,31 @@ export const MosaicoHeritage = () => {
               Change to {useLocalDescription ? 'Description' : 'Local Language'}
             </Button>
             <Paragraph style={{ color: 'white' }}>
-              {useLocalDescription ? description_local : description}
+              {useLocalDescription ? selectedCity?.description_local : selectedCity?.description}
             </Paragraph>
           </div>
         </div>
         <img
-          onError={handleErrorImage}
-          alt={cityName}
-          src={`https://o-city.org/manifestations_media/picture_city/${image}`}
-          className="city-image"
-          style={{ width: '25rem' }} />
+          onError={(e) => e.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable'}
+          alt={selectedCity?.name || cityName}
+          src={`https://o-city.org/manifestations_media/picture_city/${selectedCity?.image}`}
+          className='cityImage'
+          style={{with:'25rem'}}
+        />
       </Header>
       <Content style={{ padding: '20px' }}>
         <div className="container">
+          {/* Campo de búsqueda */}
+          <Search
+            placeholder="Search states"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onChange={(e) => setSearchText(e.target.value)}
+            style={{ marginBottom: '20px' }}
+          />
           <Row gutter={16}>
-            {heritages.map((item, index) => (
+            {filteredHeritages.map((item, index) => (
               <Col span={8} key={item.id}>
                 <Card
                   hoverable
