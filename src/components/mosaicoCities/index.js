@@ -58,6 +58,9 @@ export const MosaicoCities = () => {
   const filteredCities = cities.filter((city) =>
     city.city?.name.toLowerCase().includes(searchText.toLowerCase())
   );
+  const handleErrorImage = (event) => {
+    event.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable'; // Ruta a la imagen de respaldo
+  };
 
   return (
     <Layout>
@@ -96,7 +99,7 @@ export const MosaicoCities = () => {
                     cover={
                       <div className="image-container">
                         <img
-                         
+                        onError={handleErrorImage}
                           alt={item.city ? item.city.name : 'CITY_NAME_NOT_AVAILABLE'}
                           src={`https://o-city.org/manifestations_media/picture_city/${item.image}`}
                           className="city-image"

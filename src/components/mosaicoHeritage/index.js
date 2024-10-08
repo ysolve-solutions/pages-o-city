@@ -112,7 +112,7 @@ export const MosaicoHeritage = () => {
           onError={(e) => e.target.src = 'https://via.placeholder.com/500x300?text=ImageNoAvailable'}
           alt={selectedCity?.name || cityName}
           src={`https://o-city.org/manifestations_media/picture_city/${selectedCity?.image}`}
-          className='imagenciudad'
+          className='cityImage'
           style={{with:'25rem'}}
         />
       </Header>
