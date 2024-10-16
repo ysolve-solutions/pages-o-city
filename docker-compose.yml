@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ocity_pages:
+    image: .
+    container_name: ocity_pages
+    ports: 
+      - 80:80
+    environment:
+      REACT_APP_STATE_NAME: defaultStateName
