@@ -2,7 +2,7 @@ import React from 'react';
 import { Description } from '../description';
 import { Typography, Layout, Row, Col } from 'antd';
 
-import logo from '../../images/O-CITY_Logo.jpeg';  // Ajusta la ruta a tu imagen de logo
+import logo from '../../assets/images/ocity_logo.png';  // Ajusta la ruta a tu imagen de logo
 
 const { Text, Link } = Typography;
 const { Footer } = Layout;
@@ -22,8 +22,6 @@ const logoStyle = {
 };
 
 const Links = ({ data }) => {
- 
-
   const rawLinksInteres = Array.isArray(data.links) ? data.links : [];
   let linksInteres = [];
 
@@ -47,10 +45,7 @@ const Links = ({ data }) => {
               link.name && link.url ? (
                 <Row key={index} gutter={[16, 16]} className='mb-2'>
                   <Col span={24}>
-                    <Text strong>Description:</Text> {link.name}
-                  </Col>
-                  <Col span={24}>
-                    <Text strong>URL:</Text> <Link href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</Link>
+                    <Link href={link.url} target="_blank" rel="noopener noreferrer">{link.name}</Link>
                   </Col>
                 </Row>
               ) : null
