@@ -15,6 +15,20 @@ export const Header = ({ data }) => {
   const { name: cityName = "City not available", state_id: stateId, id: cityId } = city || {};
   const { name: countryName = '', id: countryId } = country || {};
 
+
+  function shareOnFacebook() {
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=https://test-ocity.icu/city/${data.city_id}/heritage/${heritageId}`
+    window.open(shareUrl, '_blank', 'width=820,height=640')
+  }
+
+  function shareOnTwitter() {
+    const text = encodeURIComponent('¡Mira este enlace interesante!')
+    const url = encodeURIComponent(`https://test-ocity.icu/city/${data.city_id}/heritage/${heritageId}`)
+    const hashtags = encodeURIComponent('turismo,o-city')
+    const twitterShareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`
+    window.open(twitterShareUrl, '_blank', 'width=820,height=640')
+  }
+
   useEffect(() => {
     if (stateId) {
       axios.get(`https://api.test-ocity.icu/api/State/${stateId}`)
@@ -57,10 +71,10 @@ export const Header = ({ data }) => {
               </Link>
             </Title>
             <div style={{ textAlign: 'center', marginTop: '10px' }}>
-              <Link href="https://twitter.com" target="_blank" className="social-icon">
+              <Link onClick={shareOnTwitter}   target="_blank" className="social-icon">
                 <TwitterOutlined style={{ fontSize: '40px', color: '#1DA1F2' }} />
               </Link>
-              <Link href="https://facebook.com" target="_blank" className="social-icon">
+              <Link onClick={shareOnFacebook} target="_blank" className="social-icon">
                 <FacebookOutlined style={{ fontSize: '40px', color: '#4267B2' }} />
               </Link>
             </div>
