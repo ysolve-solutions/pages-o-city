@@ -17,13 +17,13 @@ export const Header = ({ data }) => {
 
 
   function shareOnFacebook() {
-    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=https://test-ocity.icu/city/${data.city_id}/heritage/${heritageId}`
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=https://o-city.org/city/${data.city_id}/heritage/${heritageId}`
     window.open(shareUrl, '_blank', 'width=820,height=640')
   }
 
   function shareOnTwitter() {
     const text = encodeURIComponent('¡Mira este enlace interesante!')
-    const url = encodeURIComponent(`https://test-ocity.icu/city/${data.city_id}/heritage/${heritageId}`)
+    const url = encodeURIComponent(`https://o-city.org/city/${data.city_id}/heritage/${heritageId}`)
     const hashtags = encodeURIComponent('turismo,o-city')
     const twitterShareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`
     window.open(twitterShareUrl, '_blank', 'width=820,height=640')
@@ -31,7 +31,7 @@ export const Header = ({ data }) => {
 
   useEffect(() => {
     if (stateId) {
-      axios.get(`https://api.test-ocity.icu/api/State/${stateId}`)
+      axios.get(`https://api.o-city.org/api/State/${stateId}`)
         .then((response) => {
           response.data ? setStateName(response.data.name) : console.error("State data not found:", response.data);
         })
@@ -66,7 +66,7 @@ export const Header = ({ data }) => {
               {name} ({cityName})
             </Title>
             <Title level={2} style={{ fontSize: '1.5em', textAlign: 'center' }}>
-              <Link href={`https://test-ocity.icu/city/${data.city_id}/heritage/${heritageId}`} target="_blank" style={{ fontSize:'1.54rem' }}>
+              <Link href={`https://o-city.org/city/${data.city_id}/heritage/${heritageId}`} target="_blank" style={{ fontSize:'1.54rem' }}>
                 View on OCity map
               </Link>
             </Title>

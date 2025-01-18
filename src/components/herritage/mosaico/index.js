@@ -16,7 +16,7 @@ export const MosaicoCountries = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.post(`https://api.test-ocity.icu/api/country?limit=0&offset=0`)
+    axios.post(`https://api.o-city.org/api/country?limit=0&offset=0`)
       .then((response) => {
         setCountries(response.data.result);
       });

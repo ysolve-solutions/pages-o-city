@@ -24,7 +24,7 @@ export const MosaicoHeritage = () => {
   const { selectedCity } = useCity();
 
   useEffect(() => {
-    axios.get(`https://api.test-ocity.icu/api/heritage/lists/byCityId/${idCity}`)
+    axios.get(`https://api.o-city.org/api/heritage/lists/byCityId/${idCity}`)
       .then((response) => {
         const filteredHeritages = response.data.filter(heritage => heritage.city_id === parseInt(idCity));
         if (filteredHeritages.length > 0) {

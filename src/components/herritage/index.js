@@ -9,7 +9,7 @@ function HeritageIndividual() {
   const [heritage, setHeritage] = useState(null);
 
   useEffect(() => {
-    axios.get(`https://api.test-ocity.icu/api/heritage/lists/byCityId/${idCity}`)
+    axios.get(`https://api.o-city.org/api/heritage/lists/byCityId/${idCity}`)
       .then((response) => {
         // Filtrar para encontrar el patrimonio con el idHerritage
         const foundHeritage = response.data.find(item => item.id === parseInt(idHerritage));

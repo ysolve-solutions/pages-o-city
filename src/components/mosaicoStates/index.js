@@ -22,7 +22,7 @@ export const MosaicoStates = () => {
   const { setSelectedCity } = useCity();
 
   useEffect(() => {
-    axios.get(`https://api.test-ocity.icu/api/state/country/${idCountry}`)
+    axios.get(`https://api.o-city.org/api/state/country/${idCountry}`)
       .then((response) => setStates(response.data));
   }, [idCountry]);
 

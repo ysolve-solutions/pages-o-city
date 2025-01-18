@@ -22,7 +22,7 @@ export const MosaicoCities = () => {
   const { setSelectedCity } = useCity();
 
   useEffect(() => {
-    axios.post(`https://api.test-ocity.icu/api/city_ocity?limit=0&offset=0`)
+    axios.post(`https://api.o-city.org/api/city_ocity?limit=0&offset=0`)
       .then((response) => {
         if (Array.isArray(response.data.result)) {
           const filteredCities = response.data.result.filter(city => city.state_id === parseInt(idState));
