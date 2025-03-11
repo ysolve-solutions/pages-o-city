@@ -101,7 +101,7 @@ export const MosaicoCities = () => {
                         <img
                         onError={handleErrorImage}
                           alt={item.city ? item.city.name : 'CITY_NAME_NOT_AVAILABLE'}
-                          src={`https://o-city.org/manifestations_media/picture_city/${item.image}`}
+                          src={`${process.env.REACT_APP_PRODU_S3_OBJECT_STORAGE}/city_ocity/images/${item?.image}`}
                           className="city-image"
                         />
                       </div>

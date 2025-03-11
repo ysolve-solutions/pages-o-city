@@ -101,7 +101,7 @@ export const MosaicoHeritage = () => {
       <img
         onError={handleErrorImage}
         alt={selectedCity?.name || cityName}
-        src={`https://o-city.org/manifestations_media/picture_city/${selectedCity?.image}`}
+        src={`${process.env.REACT_APP_PRODU_S3_OBJECT_STORAGE}/city_ocity/images/${selectedCity?.image}`}
         className='imagenciudad mobile-image'
         style={{
           width: '100%', // Ajustar al ancho del contenedor
@@ -122,7 +122,7 @@ export const MosaicoHeritage = () => {
     <img
       onError={handleErrorImage}
       alt={selectedCity?.name || cityName}
-      src={`https://o-city.org/manifestations_media/picture_city/${selectedCity?.image}`}
+      src={`${process.env.REACT_APP_PRODU_S3_OBJECT_STORAGE}/city_ocity/images/${selectedCity?.image}`}
       className='imagenciudad desktop-image'
       style={{
         width: '300px',
@@ -179,7 +179,7 @@ export const MosaicoHeritage = () => {
                         <img
                           onError={handleErrorImage}
                           alt={item.name}
-                          src={`https://o-city.org/manifestations_media/${item.image}`}
+                          src={`${process.env.REACT_APP_PRODU_S3_OBJECT_STORAGE}/heritage/images/${item.image}`}
                           className="city-image"
                           style={{ width: '100%', height: 'auto' }}
                         />
