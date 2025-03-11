@@ -27,9 +27,10 @@ export const Description = ({ data }) => {
                     </div>
                 </Col>
                 <Col xs={24} md={12} order={1}>
-                    <div style={{ paddingRight: '10px', marginLeft: '10px' }}> {/* Ajuste de espaciado y borde a la izquierda */}
+                    <div style={{ paddingRight: '10px', marginLeft: '10px' }}>
+                        {/* Ajuste de espaciado y borde a la izquierda */}
                         <Image
-                            src={`https://o-city.org/manifestations_media/${data.image}`}
+                            src={`${process.env.REACT_APP_PRODU_S3_OBJECT_STORAGE}/heritage/images/${data.image}`}
                             alt='imagen'
                             width='100%'
                         />
